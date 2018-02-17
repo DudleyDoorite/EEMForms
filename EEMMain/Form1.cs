@@ -15,6 +15,7 @@ namespace EEMMain
     public partial class Form1 : Form
     {
         EEMSettings mySettings = new EEMSettings();
+
         public Form1()
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace EEMMain
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            #region Old Commented Code
             ////Step 1 Make a Folder
             //string _baseFolder = @"D:\Dev\Epiktetus\Sample";
             //string _game = "Space Engineers";
@@ -34,20 +36,25 @@ namespace EEMMain
             //Directory.CreateDirectory(EpisodeDir);
 
             ////Step 2 Call Convertion Command
-
+            #endregion
 
             //Subscribe to Settings Change events
             mySettings.SettingsChangedEvent += MySettings_SettingsChangedEvent;
 
+            //Load Setting object
+            LoadSettingValues();
+        }
+
+
+        private void LoadSettingValues()
+        {
             //Load all of the settings
             mySettings.LoadSettings();
-
             //Populate the entire Setting Screen
             this.tbSettings_BaseFolder.Text = mySettings.BaseFolder;
             this.tbSettings_DescriptionFile.Text = mySettings.DescriptionFile;
 
         }
-
         private void MySettings_SettingsChangedEvent(object sender, SettingsEventArg e)
         {
             
@@ -56,7 +63,7 @@ namespace EEMMain
                 case "BaseFolder":
                     this.tbSettings_BaseFolder.Text = mySettings.BaseFolder;
                     break;
-                case "DescriptionFolder":
+                case "DescriptionFile":
                     this.tbSettings_DescriptionFile.Text = mySettings.DescriptionFile;
                     break;
                 default:
@@ -64,28 +71,7 @@ namespace EEMMain
             }
         }
 
-        private void AddNode(TreeNode node)
-        {
-            //treeView1.Nodes.Add(node);
-        }
 
-        private TreeNode MakeNode(string nodeName)
-        {
-            TreeNode tn = new TreeNode(nodeName);
-            return tn;
-        }
-
-        private TreeNode AddChildNode(TreeNode parent, TreeNode child)
-        {
-            parent.Nodes.Add(child);
-            return parent;
-        }
-
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-#pragma warning restore IDE1006 // Naming Styles
-        {
-
-        }
 
         private void LoadTreeView(TreeView tree)
         {
@@ -106,7 +92,7 @@ namespace EEMMain
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DialogResult result =  folderBrowserDialog1.ShowDialog();
+            DialogResult result = folderBrowserDialog1.ShowDialog();
             switch (result)
             {
                 case DialogResult.OK:
@@ -117,5 +103,69 @@ namespace EEMMain
             }
         }
 
-      }
+
+
+        private void TbSettings_DescriptionFile_Leave1(object sender, System.EventArgs e)
+        {
+            //when we leave the edit field we check to see if it is differnt from the settings file;
+            if (tbSettings_DescriptionFile.Text.ToUpper().Trim() != mySettings.DescriptionFile.ToUpper().Trim())
+            {
+                //Update the settings object if differnt.
+                mySettings.DescriptionFile = tbSettings_DescriptionFile.Text;
+            }
+        }
+
+        private void AddNode(TreeNode node)
+        {
+            //treeView1.Nodes.Add(node);
+        }
+
+        private TreeNode MakeNode(string nodeName)
+        {
+            TreeNode tn = new TreeNode(nodeName);
+            return tn;
+        }
+
+        private TreeNode AddChildNode(TreeNode parent, TreeNode child)
+        {
+            parent.Nodes.Add(child);
+            return parent;
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mySettings.UpdateSettings();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Exit Application
+
+            if (mySettings.IsDirty)
+            {
+                //if settings need saving then prompt for save.
+                DialogResult result = MessageBox.Show("Settings have not been Save do you wish to save before exiting", "Unsave Settings", MessageBoxButtons.YesNoCancel);
+                switch (result)
+                {
+                    case DialogResult.Cancel:
+                        break;
+                    case DialogResult.Yes:
+                        mySettings.UpdateSettings();
+                        Application.Exit();
+                        break;
+                    case DialogResult.No:
+                        Application.Exit();
+                        break;
+                    default:
+                        Application.Exit();
+                        break;
+                }
+            }
+            else
+            {
+                Application.Exit();
+            }
+        }
+
+    }
 }

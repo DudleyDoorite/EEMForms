@@ -48,15 +48,6 @@ namespace EEMMain
 
         public bool IsDirty { get; set; }
 
-        private int myVar;
-
-        public int MyProperty
-        {
-            get { return myVar; }
-            set { myVar = value; }
-        }
-
-
         public void EEMMain()
         {
             LoadSettings();
@@ -67,8 +58,7 @@ namespace EEMMain
         {
             this.BaseFolder = ReadSetting("BaseFolder");
             this.DescriptionFile = ReadSetting("DescriptionFile");
-            Console.WriteLine(string.Format("Base Folder:{0}", this.BaseFolder));
-            Console.WriteLine(string.Format("DescriptionFolder:{0}", this.DescriptionFile));
+
             this.IsDirty = false;
         }
         private string ReadSetting(string key)
@@ -89,6 +79,7 @@ namespace EEMMain
         {
             try
             {
+                
                 var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
                 var settings = configFile.AppSettings.Settings;
                 if (settings[key] == null)
@@ -112,7 +103,6 @@ namespace EEMMain
         {
             AddUpdateSettings("BaseFolder", this.BaseFolder);
             AddUpdateSettings("DescriptionFile", this.DescriptionFile);
-
             this.IsDirty = false;
         }
 

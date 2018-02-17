@@ -32,6 +32,11 @@
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabSettings = new System.Windows.Forms.TabPage();
+            this.tbSettings_DescriptionFile = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.tbSettings_BaseFolder = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabEpisodes = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
@@ -43,12 +48,8 @@
             this.episodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tbSettings_BaseFolder = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tbSettings_DescriptionFile = new System.Windows.Forms.TextBox();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -106,6 +107,49 @@
             this.tabSettings.Text = "Settings";
             this.tabSettings.UseVisualStyleBackColor = true;
             // 
+            // tbSettings_DescriptionFile
+            // 
+            this.tbSettings_DescriptionFile.Location = new System.Drawing.Point(103, 31);
+            this.tbSettings_DescriptionFile.Name = "tbSettings_DescriptionFile";
+            this.tbSettings_DescriptionFile.Size = new System.Drawing.Size(287, 20);
+            this.tbSettings_DescriptionFile.TabIndex = 4;
+            this.tbSettings_DescriptionFile.Leave += new System.EventHandler(this.TbSettings_DescriptionFile_Leave1);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(82, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Description File:";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(676, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(27, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "...";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // tbSettings_BaseFolder
+            // 
+            this.tbSettings_BaseFolder.Location = new System.Drawing.Point(103, 5);
+            this.tbSettings_BaseFolder.Name = "tbSettings_BaseFolder";
+            this.tbSettings_BaseFolder.Size = new System.Drawing.Size(567, 20);
+            this.tbSettings_BaseFolder.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(22, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Base Folder:";
+            // 
             // tabEpisodes
             // 
             this.tabEpisodes.Controls.Add(this.splitContainer1);
@@ -162,7 +206,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingsToolStripMenuItem,
-            this.episodeToolStripMenuItem});
+            this.episodeToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(728, 24);
@@ -183,6 +228,7 @@
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // episodeToolStripMenuItem
             // 
@@ -207,47 +253,13 @@
             this.removeToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.removeToolStripMenuItem.Text = "Remove";
             // 
-            // label1
+            // exitToolStripMenuItem
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Base Folder:";
-            // 
-            // tbSettings_BaseFolder
-            // 
-            this.tbSettings_BaseFolder.Location = new System.Drawing.Point(103, 5);
-            this.tbSettings_BaseFolder.Name = "tbSettings_BaseFolder";
-            this.tbSettings_BaseFolder.Size = new System.Drawing.Size(567, 20);
-            this.tbSettings_BaseFolder.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(676, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(27, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 38);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Description File:";
-            // 
-            // tbSettings_DescriptionFile
-            // 
-            this.tbSettings_DescriptionFile.Location = new System.Drawing.Point(103, 31);
-            this.tbSettings_DescriptionFile.Name = "tbSettings_DescriptionFile";
-            this.tbSettings_DescriptionFile.Size = new System.Drawing.Size(287, 20);
-            this.tbSettings_DescriptionFile.TabIndex = 4;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -279,7 +291,6 @@
             this.PerformLayout();
 
         }
-
         #endregion
 
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
@@ -302,6 +313,7 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.TextBox tbSettings_DescriptionFile;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 
