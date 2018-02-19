@@ -15,6 +15,7 @@ namespace EEMMain
     public partial class Form1 : Form
     {
         EEMSettings mySettings = new EEMSettings();
+        Episode curEpisode = new Episode();
 
         public Form1()
         {
@@ -38,88 +39,49 @@ namespace EEMMain
             ////Step 2 Call Convertion Command
             #endregion
 
-            //Subscribe to Settings Change events
-            mySettings.SettingsChangedEvent += MySettings_SettingsChangedEvent;
-
             //Load Setting object
             LoadSettingValues();
-
             ScanBaseFolder();
+
+
+            //Create Events
+            treeView1.AfterSelect += TreeView1_AfterSelect;
         }
 
+        private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(curEpisode.Path))
+            {
+                curEpisode.Title = tbTitle.Text;
+                curEpisode.Description = tbDescription.Text;
+                curEpisode.Tags = tbTags.Text;
+                curEpisode.SaveGameFolder = tbSaveGameFolder.Text;
+                curEpisode.Save(curEpisode.Path);
+            }
+
+
+            //Open the episode.xml file
+            string xmlFile = string.Format("{0}\\{1}\\{2}", mySettings.BaseFolder, e.Node.Text, mySettings.DescriptionFile);
+            //Into our current episode object 
+            curEpisode.Load(xmlFile);
+
+
+            //and update the episode screen
+            curEpisode.Path = xmlFile;
+            this.tbTitle.Text = curEpisode.Title;
+            this.tbDescription.Text = curEpisode.Description;
+            this.tbTags.Text = curEpisode.Tags;
+            this.tbSaveGameFolder.Text = curEpisode.SaveGameFolder;
+        }
 
         private void LoadSettingValues()
         {
             //Load all of the settings
             mySettings.LoadSettings();
-            //Populate the entire Setting Screen
-            this.tbSettings_BaseFolder.Text = mySettings.BaseFolder;
-            this.tbSettings_DescriptionFile.Text = mySettings.DescriptionFile;
-
         }
-        private void MySettings_SettingsChangedEvent(object sender, SettingsEventArg e)
-        {
-            
-            switch (e.Key)
-            {
-                case "BaseFolder":
-                    this.tbSettings_BaseFolder.Text = mySettings.BaseFolder;
-                    break;
-                case "DescriptionFile":
-                    this.tbSettings_DescriptionFile.Text = mySettings.DescriptionFile;
-                    break;
-                default:
-                    break;
-            }
-        }
-
-
 
         private void LoadTreeView(TreeView tree)
         {
-            // Scan Base Folder for any folders and check in subfolders for Description.txt 
-            // to indicate it is a Episode folder
-            //
-            //DirectoryInfo di = new DirectoryInfo(mySettings.BaseFolder);
-
-
-
-
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            mySettings.UpdateSettings();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DialogResult result = folderBrowserDialog1.ShowDialog();
-            switch (result)
-            {
-                case DialogResult.OK:
-                    mySettings.BaseFolder = folderBrowserDialog1.SelectedPath;
-                    break;
-                default:
-                    break;
-            }
-        }
-
-
-
-        private void TbSettings_DescriptionFile_Leave1(object sender, System.EventArgs e)
-        {
-            //when we leave the edit field we check to see if it is differnt from the settings file;
-            if (tbSettings_DescriptionFile.Text.ToUpper().Trim() != mySettings.DescriptionFile.ToUpper().Trim())
-            {
-                //Update the settings object if differnt.
-                mySettings.DescriptionFile = tbSettings_DescriptionFile.Text;
-            }
-        }
-
-        private void AddNode(TreeNode node)
-        {
-            //treeView1.Nodes.Add(node);
         }
 
         private TreeNode MakeNode(string nodeName)
@@ -133,42 +95,7 @@ namespace EEMMain
             parent.Nodes.Add(child);
             return parent;
         }
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            mySettings.UpdateSettings();
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Exit Application
-
-            if (mySettings.IsDirty)
-            {
-                //if settings need saving then prompt for save.
-                DialogResult result = MessageBox.Show("Settings have not been Save do you wish to save before exiting", "Unsave Settings", MessageBoxButtons.YesNoCancel);
-                switch (result)
-                {
-                    case DialogResult.Cancel:
-                        break;
-                    case DialogResult.Yes:
-                        mySettings.UpdateSettings();
-                        Application.Exit();
-                        break;
-                    case DialogResult.No:
-                        Application.Exit();
-                        break;
-                    default:
-                        Application.Exit();
-                        break;
-                }
-            }
-            else
-            {
-                Application.Exit();
-            }
-        }
-
+        
         private void ScanBaseFolder()
         {
             //Get base folder from seetings.
@@ -184,5 +111,26 @@ namespace EEMMain
                 }
             }
         }
+
+        private void pullFilesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cloneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Ask what the new folder name is
+            
+            //Add the new name to the base folder and create the new folder
+            Directory.CreateDirectory(string.Format("",mySettings.BaseFolder,newFolder)):
+
+
+        }
+
+        private void archiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
