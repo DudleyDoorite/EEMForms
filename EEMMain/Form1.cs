@@ -126,7 +126,7 @@ namespace EEMMain
         private void cloneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Ask what the new folder name is
-            
+
             //Add the new name to the base folder and create the new folder
             //Directory.CreateDirectory(string.Format("",mySettings.BaseFolder,newFolder)):
 
@@ -141,6 +141,31 @@ namespace EEMMain
         private void treeView1_AfterSelect_1(object sender, TreeViewEventArgs e)
         {
 
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void toolStripContainer1_TopToolStripPanel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCopyTitle_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(this.tbTitle.Text);
+        }
+
+        private void btnCopyDesc_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(this.tbDescription.Text);
+        }
+
+        private void btnCopyTags_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(this.tbTags.Text);
         }
     }
 }

@@ -48,7 +48,7 @@ namespace EEMMain
                 Episode tmpEpisode = (Episode)ser.Deserialize(sr);
 
                 this.Title = tmpEpisode.Title;
-                this.Description = tmpEpisode.Description;
+                this.Description = tmpEpisode.Description.Replace("\n","\r\n"); //xml files only store \n but textboxes on windows need \r\n
                 this.Tags = tmpEpisode.Tags;
                 this.SaveGameFolder = tmpEpisode.SaveGameFolder;
             }
