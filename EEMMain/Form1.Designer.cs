@@ -34,15 +34,15 @@
             this.tabEpisodes = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.tbSaveGameFolder = new System.Windows.Forms.TextBox();
-            this.tbTags = new System.Windows.Forms.TextBox();
-            this.tbDescription = new System.Windows.Forms.TextBox();
-            this.tbTitle = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cloneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.archiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pullFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pullSaveGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbSaveGameFolder = new System.Windows.Forms.TextBox();
+            this.tbTags = new System.Windows.Forms.TextBox();
+            this.tbDescription = new System.Windows.Forms.TextBox();
+            this.tbTitle = new System.Windows.Forms.TextBox();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -60,11 +60,11 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tabControl1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(728, 632);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(795, 466);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(728, 657);
+            this.toolStripContainer1.Size = new System.Drawing.Size(795, 491);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -75,7 +75,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(728, 632);
+            this.tabControl1.Size = new System.Drawing.Size(795, 466);
             this.tabControl1.TabIndex = 0;
             // 
             // tabEpisodes
@@ -84,14 +84,18 @@
             this.tabEpisodes.Location = new System.Drawing.Point(4, 22);
             this.tabEpisodes.Name = "tabEpisodes";
             this.tabEpisodes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEpisodes.Size = new System.Drawing.Size(720, 606);
+            this.tabEpisodes.Size = new System.Drawing.Size(787, 440);
             this.tabEpisodes.TabIndex = 1;
             this.tabEpisodes.Text = "Episodes";
             this.tabEpisodes.UseVisualStyleBackColor = true;
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.Location = new System.Drawing.Point(3, 3);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -105,48 +109,24 @@
             this.splitContainer1.Panel2.Controls.Add(this.tbTags);
             this.splitContainer1.Panel2.Controls.Add(this.tbDescription);
             this.splitContainer1.Panel2.Controls.Add(this.tbTitle);
-            this.splitContainer1.Size = new System.Drawing.Size(714, 600);
-            this.splitContainer1.SplitterDistance = 238;
+            this.splitContainer1.Size = new System.Drawing.Size(781, 434);
+            this.splitContainer1.SplitterDistance = 126;
+            this.splitContainer1.SplitterIncrement = 10;
+            this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 0;
             // 
             // treeView1
             // 
+            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.treeView1.ContextMenuStrip = this.contextMenuStrip1;
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(238, 600);
+            this.treeView1.ShowRootLines = false;
+            this.treeView1.Size = new System.Drawing.Size(123, 429);
             this.treeView1.TabIndex = 0;
-            // 
-            // tbSaveGameFolder
-            // 
-            this.tbSaveGameFolder.Location = new System.Drawing.Point(14, 317);
-            this.tbSaveGameFolder.Name = "tbSaveGameFolder";
-            this.tbSaveGameFolder.Size = new System.Drawing.Size(443, 20);
-            this.tbSaveGameFolder.TabIndex = 3;
-            // 
-            // tbTags
-            // 
-            this.tbTags.Location = new System.Drawing.Point(14, 179);
-            this.tbTags.Multiline = true;
-            this.tbTags.Name = "tbTags";
-            this.tbTags.Size = new System.Drawing.Size(443, 122);
-            this.tbTags.TabIndex = 2;
-            // 
-            // tbDescription
-            // 
-            this.tbDescription.Location = new System.Drawing.Point(14, 51);
-            this.tbDescription.Multiline = true;
-            this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(443, 122);
-            this.tbDescription.TabIndex = 1;
-            // 
-            // tbTitle
-            // 
-            this.tbTitle.Location = new System.Drawing.Point(14, 15);
-            this.tbTitle.Name = "tbTitle";
-            this.tbTitle.Size = new System.Drawing.Size(443, 20);
-            this.tbTitle.TabIndex = 0;
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect_1);
             // 
             // contextMenuStrip1
             // 
@@ -185,12 +165,53 @@
             this.pullSaveGameToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.pullSaveGameToolStripMenuItem.Text = "Pull Save Game";
             // 
+            // tbSaveGameFolder
+            // 
+            this.tbSaveGameFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbSaveGameFolder.Location = new System.Drawing.Point(0, 409);
+            this.tbSaveGameFolder.Name = "tbSaveGameFolder";
+            this.tbSaveGameFolder.Size = new System.Drawing.Size(650, 20);
+            this.tbSaveGameFolder.TabIndex = 3;
+            // 
+            // tbTags
+            // 
+            this.tbTags.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbTags.Location = new System.Drawing.Point(0, 338);
+            this.tbTags.Multiline = true;
+            this.tbTags.Name = "tbTags";
+            this.tbTags.Size = new System.Drawing.Size(650, 65);
+            this.tbTags.TabIndex = 2;
+            // 
+            // tbDescription
+            // 
+            this.tbDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbDescription.Location = new System.Drawing.Point(0, 38);
+            this.tbDescription.Multiline = true;
+            this.tbDescription.Name = "tbDescription";
+            this.tbDescription.Size = new System.Drawing.Size(650, 294);
+            this.tbDescription.TabIndex = 1;
+            // 
+            // tbTitle
+            // 
+            this.tbTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTitle.Location = new System.Drawing.Point(0, 0);
+            this.tbTitle.Name = "tbTitle";
+            this.tbTitle.Size = new System.Drawing.Size(650, 32);
+            this.tbTitle.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(728, 657);
+            this.ClientSize = new System.Drawing.Size(795, 491);
             this.Controls.Add(this.toolStripContainer1);
+            this.MinimumSize = new System.Drawing.Size(450, 350);
             this.Name = "Form1";
             this.Text = "Epiktetus Episode Manager";
             this.Load += new System.EventHandler(this.Form1_Load);

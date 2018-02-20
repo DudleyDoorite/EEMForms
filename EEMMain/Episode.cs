@@ -25,15 +25,17 @@ namespace EEMMain
 
         public void Save(string path)
         {
-            //create a serilaizer
-            System.Xml.Serialization.XmlSerializer ser = new System.Xml.Serialization.XmlSerializer(typeof(Episode));
-            //create the stream
-            System.IO.StreamWriter sw = new System.IO.StreamWriter(path);
-            ser.Serialize(sw,this);
+            if (Tags != "Error")
+            {
+                //create a serilaizer
+                System.Xml.Serialization.XmlSerializer ser = new System.Xml.Serialization.XmlSerializer(typeof(Episode));
+                //create the stream
+                System.IO.StreamWriter sw = new System.IO.StreamWriter(path);
+                ser.Serialize(sw, this);
 
-            sw.Flush();
-            sw.Close();
-            
+                sw.Flush();
+                sw.Close();
+            }
         }
         public void Load(string path)
         {
@@ -41,16 +43,23 @@ namespace EEMMain
             System.Xml.Serialization.XmlSerializer ser = new System.Xml.Serialization.XmlSerializer(typeof(Episode));
             //create the stream
             System.IO.StreamReader sr = new System.IO.StreamReader(path);
+            try
+            {
+                Episode tmpEpisode = (Episode)ser.Deserialize(sr);
 
-            Episode tmpEpisode = (Episode)ser.Deserialize(sr);
+                this.Title = tmpEpisode.Title;
+                this.Description = tmpEpisode.Description;
+                this.Tags = tmpEpisode.Tags;
+                this.SaveGameFolder = tmpEpisode.SaveGameFolder;
+            }
+            catch (Exception e)
+            {
+                this.Title = e.Message;
+                this.Description = e.InnerException.Message;
+                this.Tags = "Error";
+            }
 
-
-            this.Title = tmpEpisode.Title;
-            this.Description = tmpEpisode.Description;
-            this.Tags = tmpEpisode.Tags;
-            this.SaveGameFolder = tmpEpisode.SaveGameFolder;
             sr.Close();
-
         }
 
 

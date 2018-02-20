@@ -100,15 +100,21 @@ namespace EEMMain
         {
             //Get base folder from seetings.
             DirectoryInfo di = new DirectoryInfo(mySettings.BaseFolder);
-            IEnumerable<DirectoryInfo> dirList = di.EnumerateDirectories();
-
-            foreach (DirectoryInfo dir in dirList)
+            if (di.Exists)
             {
-                string checkfile = string.Format("{0}\\{1}", dir.FullName, mySettings.DescriptionFile);
-                if (File.Exists(checkfile))
+                IEnumerable<DirectoryInfo> dirList = di.EnumerateDirectories();
+
+                foreach (DirectoryInfo dir in dirList)
                 {
-                    treeView1.Nodes.Add(dir.Name);
+                    string checkfile = string.Format("{0}\\{1}", dir.FullName, mySettings.DescriptionFile);
+                    if (File.Exists(checkfile))
+                    {
+                        treeView1.Nodes.Add(dir.Name);
+                    }
                 }
+            }
+            else {
+                MessageBox.Show("Base Folder not Found: " + mySettings.BaseFolder,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -122,7 +128,7 @@ namespace EEMMain
             //Ask what the new folder name is
             
             //Add the new name to the base folder and create the new folder
-            Directory.CreateDirectory(string.Format("",mySettings.BaseFolder,newFolder)):
+            //Directory.CreateDirectory(string.Format("",mySettings.BaseFolder,newFolder)):
 
 
         }
@@ -132,5 +138,9 @@ namespace EEMMain
 
         }
 
+        private void treeView1_AfterSelect_1(object sender, TreeViewEventArgs e)
+        {
+
+        }
     }
 }
