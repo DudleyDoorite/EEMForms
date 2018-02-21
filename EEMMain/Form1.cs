@@ -95,7 +95,7 @@ namespace EEMMain
             parent.Nodes.Add(child);
             return parent;
         }
-        
+
         private void ScanBaseFolder()
         {
             //Get base folder from seetings.
@@ -113,14 +113,36 @@ namespace EEMMain
                     }
                 }
             }
-            else {
-                MessageBox.Show("Base Folder not Found: " + mySettings.BaseFolder,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            else
+            {
+                MessageBox.Show("Base Folder not Found: " + mySettings.BaseFolder, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void archiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //lowest priority feature
+            //move entire episode folder to a selected folder (default is Z:\EpikTek\seriesname\seasonname but this isn't predictable enough to do programatically)
+            ScanBaseFolder();
         }
 
         private void pullFilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //look in captures folder for *.mkv files
 
+            //for each one execute this command:
+            //C:\Users\epikt\OneDrive\Apps\ffmpeg\bin\ffmpeg.exe -i "[filename].mkv" -c:v copy -c:a  pcm_s16le -map 0:0 -map 0:1 -map 0:2 -map 0:3 "[seledcted folder]\[filename].mov"
+
+            //if all went well, delete the original file from the captures folder
+        }
+
+        private void pullSaveGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //display a list of folders in the savegame folder for the selected episode.
+
+            //the chosen subdir should then be compressed to a zip file and stored in the selected episode
+
+            //the chosen subdir should be optionally deleted via yes/no dialog box
         }
 
         private void cloneToolStripMenuItem_Click(object sender, EventArgs e)
@@ -130,12 +152,22 @@ namespace EEMMain
             //Add the new name to the base folder and create the new folder
             //Directory.CreateDirectory(string.Format("",mySettings.BaseFolder,newFolder)):
 
-
+            ScanBaseFolder();
         }
 
-        private void archiveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnCopyTitle_Click(object sender, EventArgs e)
         {
+            Clipboard.SetText(this.tbTitle.Text);
+        }
 
+        private void btnCopyDesc_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(this.tbDescription.Text);
+        }
+
+        private void btnCopyTags_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(this.tbTags.Text);
         }
 
         private void treeView1_AfterSelect_1(object sender, TreeViewEventArgs e)
@@ -153,19 +185,10 @@ namespace EEMMain
 
         }
 
-        private void btnCopyTitle_Click(object sender, EventArgs e)
+        private void btnAvailable_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(this.tbTitle.Text);
-        }
-
-        private void btnCopyDesc_Click(object sender, EventArgs e)
-        {
-            Clipboard.SetText(this.tbDescription.Text);
-        }
-
-        private void btnCopyTags_Click(object sender, EventArgs e)
-        {
-            Clipboard.SetText(this.tbTags.Text);
+            //show FormSign or replace it if one already exists.
+            //might need to position to x=1920 y=0
         }
     }
 }

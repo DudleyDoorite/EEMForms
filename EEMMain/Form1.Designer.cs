@@ -40,13 +40,15 @@
             this.archiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pullFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pullSaveGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCopyTags = new System.Windows.Forms.Button();
+            this.btnCopyDesc = new System.Windows.Forms.Button();
+            this.btnCopyTitle = new System.Windows.Forms.Button();
             this.tbSaveGameFolder = new System.Windows.Forms.TextBox();
             this.tbTags = new System.Windows.Forms.TextBox();
             this.tbDescription = new System.Windows.Forms.TextBox();
             this.tbTitle = new System.Windows.Forms.TextBox();
-            this.btnCopyTitle = new System.Windows.Forms.Button();
-            this.btnCopyDesc = new System.Windows.Forms.Button();
-            this.btnCopyTags = new System.Windows.Forms.Button();
+            this.tabDoorsign = new System.Windows.Forms.TabPage();
+            this.btnAvailable = new System.Windows.Forms.Button();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -56,6 +58,7 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.tabDoorsign.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripContainer1
@@ -79,6 +82,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabEpisodes);
+            this.tabControl1.Controls.Add(this.tabDoorsign);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -168,7 +172,7 @@
             // 
             this.pullFilesToolStripMenuItem.Name = "pullFilesToolStripMenuItem";
             this.pullFilesToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.pullFilesToolStripMenuItem.Text = "Pull VideoFiles";
+            this.pullFilesToolStripMenuItem.Text = "Pull Video Files";
             this.pullFilesToolStripMenuItem.Click += new System.EventHandler(this.pullFilesToolStripMenuItem_Click);
             // 
             // pullSaveGameToolStripMenuItem
@@ -176,6 +180,40 @@
             this.pullSaveGameToolStripMenuItem.Name = "pullSaveGameToolStripMenuItem";
             this.pullSaveGameToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.pullSaveGameToolStripMenuItem.Text = "Pull Save Game";
+            this.pullSaveGameToolStripMenuItem.Click += new System.EventHandler(this.pullSaveGameToolStripMenuItem_Click);
+            // 
+            // btnCopyTags
+            // 
+            this.btnCopyTags.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCopyTags.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyTags.Image")));
+            this.btnCopyTags.Location = new System.Drawing.Point(527, 267);
+            this.btnCopyTags.Name = "btnCopyTags";
+            this.btnCopyTags.Size = new System.Drawing.Size(25, 25);
+            this.btnCopyTags.TabIndex = 6;
+            this.btnCopyTags.UseVisualStyleBackColor = true;
+            this.btnCopyTags.Click += new System.EventHandler(this.btnCopyTags_Click);
+            // 
+            // btnCopyDesc
+            // 
+            this.btnCopyDesc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCopyDesc.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyDesc.Image")));
+            this.btnCopyDesc.Location = new System.Drawing.Point(527, 41);
+            this.btnCopyDesc.Name = "btnCopyDesc";
+            this.btnCopyDesc.Size = new System.Drawing.Size(25, 25);
+            this.btnCopyDesc.TabIndex = 5;
+            this.btnCopyDesc.UseVisualStyleBackColor = true;
+            this.btnCopyDesc.Click += new System.EventHandler(this.btnCopyDesc_Click);
+            // 
+            // btnCopyTitle
+            // 
+            this.btnCopyTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCopyTitle.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyTitle.Image")));
+            this.btnCopyTitle.Location = new System.Drawing.Point(527, 3);
+            this.btnCopyTitle.Name = "btnCopyTitle";
+            this.btnCopyTitle.Size = new System.Drawing.Size(25, 25);
+            this.btnCopyTitle.TabIndex = 4;
+            this.btnCopyTitle.UseVisualStyleBackColor = true;
+            this.btnCopyTitle.Click += new System.EventHandler(this.btnCopyTitle_Click);
             // 
             // tbSaveGameFolder
             // 
@@ -183,7 +221,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbSaveGameFolder.Location = new System.Drawing.Point(1, 335);
             this.tbSaveGameFolder.Name = "tbSaveGameFolder";
-            this.tbSaveGameFolder.Size = new System.Drawing.Size(552, 20);
+            this.tbSaveGameFolder.Size = new System.Drawing.Size(554, 20);
             this.tbSaveGameFolder.TabIndex = 3;
             // 
             // tbTags
@@ -193,7 +231,7 @@
             this.tbTags.Location = new System.Drawing.Point(1, 264);
             this.tbTags.Multiline = true;
             this.tbTags.Name = "tbTags";
-            this.tbTags.Size = new System.Drawing.Size(552, 65);
+            this.tbTags.Size = new System.Drawing.Size(554, 65);
             this.tbTags.TabIndex = 2;
             // 
             // tbDescription
@@ -204,7 +242,7 @@
             this.tbDescription.Location = new System.Drawing.Point(1, 38);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(552, 220);
+            this.tbDescription.Size = new System.Drawing.Size(554, 220);
             this.tbDescription.TabIndex = 1;
             // 
             // tbTitle
@@ -214,41 +252,31 @@
             this.tbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbTitle.Location = new System.Drawing.Point(1, 0);
             this.tbTitle.Name = "tbTitle";
-            this.tbTitle.Size = new System.Drawing.Size(552, 32);
+            this.tbTitle.Size = new System.Drawing.Size(554, 32);
             this.tbTitle.TabIndex = 0;
             // 
-            // btnCopyTitle
+            // tabDoorsign
             // 
-            this.btnCopyTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCopyTitle.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyTitle.Image")));
-            this.btnCopyTitle.Location = new System.Drawing.Point(525, 3);
-            this.btnCopyTitle.Name = "btnCopyTitle";
-            this.btnCopyTitle.Size = new System.Drawing.Size(25, 25);
-            this.btnCopyTitle.TabIndex = 4;
-            this.btnCopyTitle.UseVisualStyleBackColor = true;
-            this.btnCopyTitle.Click += new System.EventHandler(this.btnCopyTitle_Click);
+            this.tabDoorsign.Controls.Add(this.btnAvailable);
+            this.tabDoorsign.Location = new System.Drawing.Point(4, 22);
+            this.tabDoorsign.Name = "tabDoorsign";
+            this.tabDoorsign.Padding = new System.Windows.Forms.Padding(3);
+            this.tabDoorsign.Size = new System.Drawing.Size(689, 366);
+            this.tabDoorsign.TabIndex = 2;
+            this.tabDoorsign.Text = "Door Sign";
+            this.tabDoorsign.UseVisualStyleBackColor = true;
             // 
-            // btnCopyDesc
+            // btnAvailable
             // 
-            this.btnCopyDesc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCopyDesc.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyDesc.Image")));
-            this.btnCopyDesc.Location = new System.Drawing.Point(525, 41);
-            this.btnCopyDesc.Name = "btnCopyDesc";
-            this.btnCopyDesc.Size = new System.Drawing.Size(25, 25);
-            this.btnCopyDesc.TabIndex = 5;
-            this.btnCopyDesc.UseVisualStyleBackColor = true;
-            this.btnCopyDesc.Click += new System.EventHandler(this.btnCopyDesc_Click);
-            // 
-            // btnCopyTags
-            // 
-            this.btnCopyTags.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCopyTags.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyTags.Image")));
-            this.btnCopyTags.Location = new System.Drawing.Point(525, 267);
-            this.btnCopyTags.Name = "btnCopyTags";
-            this.btnCopyTags.Size = new System.Drawing.Size(25, 25);
-            this.btnCopyTags.TabIndex = 6;
-            this.btnCopyTags.UseVisualStyleBackColor = true;
-            this.btnCopyTags.Click += new System.EventHandler(this.btnCopyTags_Click);
+            this.btnAvailable.BackColor = System.Drawing.Color.Chartreuse;
+            this.btnAvailable.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAvailable.Location = new System.Drawing.Point(8, 6);
+            this.btnAvailable.Name = "btnAvailable";
+            this.btnAvailable.Size = new System.Drawing.Size(112, 49);
+            this.btnAvailable.TabIndex = 0;
+            this.btnAvailable.Text = "Available";
+            this.btnAvailable.UseVisualStyleBackColor = false;
+            this.btnAvailable.Click += new System.EventHandler(this.btnAvailable_Click);
             // 
             // Form1
             // 
@@ -271,6 +299,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
+            this.tabDoorsign.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -294,6 +323,8 @@
         private System.Windows.Forms.Button btnCopyTags;
         private System.Windows.Forms.Button btnCopyDesc;
         private System.Windows.Forms.Button btnCopyTitle;
+        private System.Windows.Forms.TabPage tabDoorsign;
+        private System.Windows.Forms.Button btnAvailable;
     }
 }
 
