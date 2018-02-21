@@ -43,7 +43,6 @@ namespace EEMMain
         }
         public string FFMpegPath { get; set; }
 
-            
 
 
         public bool IsDirty { get; set; }
@@ -103,11 +102,9 @@ namespace EEMMain
         {
             AddUpdateSettings("BaseFolder", this.BaseFolder);
             AddUpdateSettings("DescriptionFile", this.DescriptionFile);
-            AddUpdateSettings("FFMpegPath",this.FFMpegPath);
+            AddUpdateSettings("FFMpegPath", this.FFMpegPath);
             this.IsDirty = false;
         }
-
-
 
 
         // Wrap event invocations inside a protected virtual method

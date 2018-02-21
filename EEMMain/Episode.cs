@@ -13,8 +13,11 @@ namespace EEMMain
         public string Description { get; set; }
         public string Tags { get; set; }
         public string SaveGameFolder { get; set; }
+        public string FolderName { get; set; }
+
 
         private string _path;
+
         [System.Xml.Serialization.XmlIgnore]
         public string Path
         {

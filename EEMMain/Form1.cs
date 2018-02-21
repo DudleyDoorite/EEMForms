@@ -16,6 +16,7 @@ namespace EEMMain
     {
         EEMSettings mySettings = new EEMSettings();
         Episode curEpisode = new Episode();
+        Form mySign = new FormSign();
 
         public Form1()
         {
@@ -56,6 +57,10 @@ namespace EEMMain
                 curEpisode.Description = tbDescription.Text;
                 curEpisode.Tags = tbTags.Text;
                 curEpisode.SaveGameFolder = tbSaveGameFolder.Text;
+                curEpisode.FolderName = ""; //Replace this with a txt box on the episode screen                
+
+
+
                 curEpisode.Save(curEpisode.Path);
             }
 
@@ -68,10 +73,14 @@ namespace EEMMain
 
             //and update the episode screen
             curEpisode.Path = xmlFile;
+            curEpisode.FolderName = e.Node.Text;
+
+
             this.tbTitle.Text = curEpisode.Title;
             this.tbDescription.Text = curEpisode.Description;
             this.tbTags.Text = curEpisode.Tags;
             this.tbSaveGameFolder.Text = curEpisode.SaveGameFolder;
+            //TODO:Add Txt box load for Folder name
         }
 
         private void LoadSettingValues()
@@ -149,14 +158,15 @@ namespace EEMMain
         private void cloneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Ask what the new folder name is
-            string newFolderName = string.Empty;
+            string newFolderName = curEpisode.FolderName;
             string tmpNewFolderPath = string.Empty;
 
             if (string.IsNullOrEmpty(curEpisode.Path))
             {
                 return; 
             }
-            if (CustomInput.InputBox("Clone A Fodler", "Enter the Name you want for the new folder", ref newFolderName) == DialogResult.OK)
+
+            if (CustomInput.InputBox("Clone A Folder", "Enter the Name you want for the new folder", ref newFolderName) == DialogResult.OK)
             {
                 //Add the new name to the base folder and create the new folder
                 tmpNewFolderPath = string.Format("{0}\\{1}", mySettings.BaseFolder, newFolderName);
@@ -197,17 +207,7 @@ namespace EEMMain
             Clipboard.SetText(this.tbTags.Text);
         }
 
-        private void treeView1_AfterSelect_1(object sender, TreeViewEventArgs e)
-        {
-
-        }
-
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-
-        }
-
-        private void toolStripContainer1_TopToolStripPanel_Click(object sender, EventArgs e)
         {
 
         }
@@ -216,6 +216,8 @@ namespace EEMMain
         {
             //show FormSign or replace it if one already exists.
             //might need to position to x=1920 y=0
+            mySign.Show(this);
+            mySign.Close();
         }
     }
 }
