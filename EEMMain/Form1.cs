@@ -102,8 +102,9 @@ namespace EEMMain
             DirectoryInfo di = new DirectoryInfo(mySettings.BaseFolder);
             if (di.Exists)
             {
+                
                 IEnumerable<DirectoryInfo> dirList = di.EnumerateDirectories();
-
+                treeView1.Nodes.Clear();
                 foreach (DirectoryInfo dir in dirList)
                 {
                     string checkfile = string.Format("{0}\\{1}", dir.FullName, mySettings.DescriptionFile);
@@ -148,9 +149,35 @@ namespace EEMMain
         private void cloneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Ask what the new folder name is
+            string newFolderName = string.Empty;
+            string tmpNewFolderPath = string.Empty;
 
-            //Add the new name to the base folder and create the new folder
-            //Directory.CreateDirectory(string.Format("",mySettings.BaseFolder,newFolder)):
+            if (string.IsNullOrEmpty(curEpisode.Path))
+            {
+                return; 
+            }
+            if (CustomInput.InputBox("Clone A Fodler", "Enter the Name you want for the new folder", ref newFolderName) == DialogResult.OK)
+            {
+                //Add the new name to the base folder and create the new folder
+                tmpNewFolderPath = string.Format("{0}\\{1}", mySettings.BaseFolder, newFolderName);
+                //if the folder does not already exist
+                if (!Directory.Exists(tmpNewFolderPath))
+                {
+                    //Create it
+                    Directory.CreateDirectory(tmpNewFolderPath);
+                }
+
+                //TODO: We may want to warn user when a folder already exist before we copy the episode file into it.
+                //If it does exit assume it only needs a episode file.
+                //Create the destination file name and path
+                string strDestinationDescriptionFile = string.Format("{0}\\{1}", tmpNewFolderPath, mySettings.DescriptionFile);
+                //Verify it exist
+                if (File.Exists(curEpisode.Path))
+                {
+                    //Copy source Episode file to new folder.
+                    File.Copy(curEpisode.Path, strDestinationDescriptionFile);
+                }
+            }
 
             ScanBaseFolder();
         }

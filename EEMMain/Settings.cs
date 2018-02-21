@@ -41,9 +41,9 @@ namespace EEMMain
                 }
             }
         }
+        public string FFMpegPath { get; set; }
 
-
-
+            
 
 
         public bool IsDirty { get; set; }
@@ -58,7 +58,7 @@ namespace EEMMain
         {
             this.BaseFolder = ReadSetting("BaseFolder");
             this.DescriptionFile = ReadSetting("DescriptionFile");
-
+            this.FFMpegPath = ReadSetting("FFMpegPath");
             this.IsDirty = false;
         }
         private string ReadSetting(string key)
@@ -103,6 +103,7 @@ namespace EEMMain
         {
             AddUpdateSettings("BaseFolder", this.BaseFolder);
             AddUpdateSettings("DescriptionFile", this.DescriptionFile);
+            AddUpdateSettings("FFMpegPath",this.FFMpegPath);
             this.IsDirty = false;
         }
 
