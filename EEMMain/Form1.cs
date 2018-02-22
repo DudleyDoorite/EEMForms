@@ -57,10 +57,8 @@ namespace EEMMain
                 curEpisode.Description = tbDescription.Text;
                 curEpisode.Tags = tbTags.Text;
                 curEpisode.SaveGameFolder = tbSaveGameFolder.Text;
-                curEpisode.FolderName = ""; //Replace this with a txt box on the episode screen                
-
-
-
+                curEpisode.FolderName = tbFolderName.Text;            
+                
                 curEpisode.Save(curEpisode.Path);
             }
 
@@ -80,7 +78,7 @@ namespace EEMMain
             this.tbDescription.Text = curEpisode.Description;
             this.tbTags.Text = curEpisode.Tags;
             this.tbSaveGameFolder.Text = curEpisode.SaveGameFolder;
-            //TODO:Add Txt box load for Folder name
+            this.tbFolderName.Text = curEpisode.FolderName;
         }
 
         private void LoadSettingValues()
@@ -127,6 +125,11 @@ namespace EEMMain
             {
                 MessageBox.Show("Base Folder not Found: " + mySettings.BaseFolder, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void openInFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(string.Format("{0}\\{1}", mySettings.BaseFolder,curEpisode.FolderName));
         }
 
         private void archiveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -192,6 +195,11 @@ namespace EEMMain
             ScanBaseFolder();
         }
 
+        private void btnCopyFolderName_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(this.tbFolderName.Text);
+        }
+
         private void btnCopyTitle_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(this.tbTitle.Text);
@@ -212,12 +220,34 @@ namespace EEMMain
 
         }
 
-        private void btnAvailable_Click(object sender, EventArgs e)
+        private void ButtonAvailable_Click(object sender, EventArgs e)
         {
-            //show FormSign or replace it if one already exists.
-            //might need to position to x=1920 y=0
+            mySign.Hide();
+            mySign.Location = new Point(1920,0);
             mySign.Show(this);
-            mySign.Close();
+        }
+
+        private void ButtonRecording_Click(object sender, EventArgs e)
+        {
+            mySign.Hide();
+            mySign.Location = new Point(1920, 0);
+            mySign.Show(this);
+            //TODO: mySign.LabelTitle.text = "Recording";
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.youtube.com/dashboard?o=U");
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://panzoid.com/tools/backgrounder");
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("e:\\videos\\");
         }
     }
 }

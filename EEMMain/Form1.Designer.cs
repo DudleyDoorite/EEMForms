@@ -48,9 +48,16 @@
             this.tbDescription = new System.Windows.Forms.TextBox();
             this.tbTitle = new System.Windows.Forms.TextBox();
             this.tabDoorsign = new System.Windows.Forms.TabPage();
-            this.btnAvailable = new System.Windows.Forms.Button();
+            this.ButtonRecording = new System.Windows.Forms.Button();
+            this.ButtonAvailable = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.openInFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbFolderName = new System.Windows.Forms.TextBox();
+            this.btnCopyFolderName = new System.Windows.Forms.Button();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -71,11 +78,11 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tabControl1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(697, 392);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(732, 407);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(697, 417);
+            this.toolStripContainer1.Size = new System.Drawing.Size(732, 432);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -91,7 +98,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(697, 392);
+            this.tabControl1.Size = new System.Drawing.Size(732, 407);
             this.tabControl1.TabIndex = 0;
             // 
             // tabEpisodes
@@ -100,7 +107,7 @@
             this.tabEpisodes.Location = new System.Drawing.Point(4, 22);
             this.tabEpisodes.Name = "tabEpisodes";
             this.tabEpisodes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEpisodes.Size = new System.Drawing.Size(689, 366);
+            this.tabEpisodes.Size = new System.Drawing.Size(724, 381);
             this.tabEpisodes.TabIndex = 1;
             this.tabEpisodes.Text = "Episodes";
             this.tabEpisodes.UseVisualStyleBackColor = true;
@@ -121,6 +128,8 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.btnCopyFolderName);
+            this.splitContainer1.Panel2.Controls.Add(this.tbFolderName);
             this.splitContainer1.Panel2.Controls.Add(this.btnCopyTags);
             this.splitContainer1.Panel2.Controls.Add(this.btnCopyDesc);
             this.splitContainer1.Panel2.Controls.Add(this.btnCopyTitle);
@@ -128,7 +137,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.tbTags);
             this.splitContainer1.Panel2.Controls.Add(this.tbDescription);
             this.splitContainer1.Panel2.Controls.Add(this.tbTitle);
-            this.splitContainer1.Size = new System.Drawing.Size(683, 360);
+            this.splitContainer1.Size = new System.Drawing.Size(718, 375);
             this.splitContainer1.SplitterDistance = 126;
             this.splitContainer1.SplitterIncrement = 10;
             this.splitContainer1.SplitterWidth = 2;
@@ -143,18 +152,19 @@
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
             this.treeView1.ShowRootLines = false;
-            this.treeView1.Size = new System.Drawing.Size(123, 355);
+            this.treeView1.Size = new System.Drawing.Size(123, 370);
             this.treeView1.TabIndex = 0;
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openInFolderToolStripMenuItem,
             this.cloneToolStripMenuItem,
             this.archiveToolStripMenuItem,
             this.pullFilesToolStripMenuItem,
             this.pullSaveGameToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(156, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(156, 114);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // cloneToolStripMenuItem
@@ -189,7 +199,7 @@
             // 
             this.btnCopyTags.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCopyTags.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyTags.Image")));
-            this.btnCopyTags.Location = new System.Drawing.Point(529, 267);
+            this.btnCopyTags.Location = new System.Drawing.Point(557, 282);
             this.btnCopyTags.Name = "btnCopyTags";
             this.btnCopyTags.Size = new System.Drawing.Size(25, 25);
             this.btnCopyTags.TabIndex = 6;
@@ -200,7 +210,7 @@
             // 
             this.btnCopyDesc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCopyDesc.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyDesc.Image")));
-            this.btnCopyDesc.Location = new System.Drawing.Point(529, 41);
+            this.btnCopyDesc.Location = new System.Drawing.Point(557, 67);
             this.btnCopyDesc.Name = "btnCopyDesc";
             this.btnCopyDesc.Size = new System.Drawing.Size(25, 25);
             this.btnCopyDesc.TabIndex = 5;
@@ -211,7 +221,7 @@
             // 
             this.btnCopyTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCopyTitle.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyTitle.Image")));
-            this.btnCopyTitle.Location = new System.Drawing.Point(529, 3);
+            this.btnCopyTitle.Location = new System.Drawing.Point(557, 29);
             this.btnCopyTitle.Name = "btnCopyTitle";
             this.btnCopyTitle.Size = new System.Drawing.Size(25, 25);
             this.btnCopyTitle.TabIndex = 4;
@@ -222,19 +232,19 @@
             // 
             this.tbSaveGameFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbSaveGameFolder.Location = new System.Drawing.Point(1, 335);
+            this.tbSaveGameFolder.Location = new System.Drawing.Point(1, 350);
             this.tbSaveGameFolder.Name = "tbSaveGameFolder";
-            this.tbSaveGameFolder.Size = new System.Drawing.Size(556, 20);
+            this.tbSaveGameFolder.Size = new System.Drawing.Size(584, 20);
             this.tbSaveGameFolder.TabIndex = 3;
             // 
             // tbTags
             // 
             this.tbTags.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbTags.Location = new System.Drawing.Point(1, 264);
+            this.tbTags.Location = new System.Drawing.Point(1, 279);
             this.tbTags.Multiline = true;
             this.tbTags.Name = "tbTags";
-            this.tbTags.Size = new System.Drawing.Size(556, 65);
+            this.tbTags.Size = new System.Drawing.Size(584, 65);
             this.tbTags.TabIndex = 2;
             // 
             // tbDescription
@@ -242,10 +252,10 @@
             this.tbDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbDescription.Location = new System.Drawing.Point(1, 38);
+            this.tbDescription.Location = new System.Drawing.Point(1, 64);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(556, 220);
+            this.tbDescription.Size = new System.Drawing.Size(584, 206);
             this.tbDescription.TabIndex = 1;
             // 
             // tbTitle
@@ -253,14 +263,15 @@
             this.tbTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTitle.Location = new System.Drawing.Point(1, 0);
+            this.tbTitle.Location = new System.Drawing.Point(1, 26);
             this.tbTitle.Name = "tbTitle";
-            this.tbTitle.Size = new System.Drawing.Size(556, 32);
+            this.tbTitle.Size = new System.Drawing.Size(584, 32);
             this.tbTitle.TabIndex = 0;
             // 
             // tabDoorsign
             // 
-            this.tabDoorsign.Controls.Add(this.btnAvailable);
+            this.tabDoorsign.Controls.Add(this.ButtonRecording);
+            this.tabDoorsign.Controls.Add(this.ButtonAvailable);
             this.tabDoorsign.Location = new System.Drawing.Point(4, 22);
             this.tabDoorsign.Name = "tabDoorsign";
             this.tabDoorsign.Padding = new System.Windows.Forms.Padding(3);
@@ -269,26 +280,41 @@
             this.tabDoorsign.Text = "Door Sign";
             this.tabDoorsign.UseVisualStyleBackColor = true;
             // 
-            // btnAvailable
+            // ButtonRecording
             // 
-            this.btnAvailable.BackColor = System.Drawing.Color.Chartreuse;
-            this.btnAvailable.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAvailable.Location = new System.Drawing.Point(8, 6);
-            this.btnAvailable.Name = "btnAvailable";
-            this.btnAvailable.Size = new System.Drawing.Size(112, 49);
-            this.btnAvailable.TabIndex = 0;
-            this.btnAvailable.Text = "Available";
-            this.btnAvailable.UseVisualStyleBackColor = false;
-            this.btnAvailable.Click += new System.EventHandler(this.btnAvailable_Click);
+            this.ButtonRecording.BackColor = System.Drawing.Color.Yellow;
+            this.ButtonRecording.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonRecording.Location = new System.Drawing.Point(149, 6);
+            this.ButtonRecording.Name = "ButtonRecording";
+            this.ButtonRecording.Size = new System.Drawing.Size(135, 49);
+            this.ButtonRecording.TabIndex = 0;
+            this.ButtonRecording.Text = "Recording";
+            this.ButtonRecording.UseVisualStyleBackColor = false;
+            this.ButtonRecording.Click += new System.EventHandler(this.ButtonRecording_Click);
+            // 
+            // ButtonAvailable
+            // 
+            this.ButtonAvailable.BackColor = System.Drawing.Color.Chartreuse;
+            this.ButtonAvailable.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonAvailable.Location = new System.Drawing.Point(8, 6);
+            this.ButtonAvailable.Name = "ButtonAvailable";
+            this.ButtonAvailable.Size = new System.Drawing.Size(135, 49);
+            this.ButtonAvailable.TabIndex = 0;
+            this.ButtonAvailable.Text = "Available";
+            this.ButtonAvailable.UseVisualStyleBackColor = false;
+            this.ButtonAvailable.Click += new System.EventHandler(this.ButtonAvailable_Click);
             // 
             // toolStrip1
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1});
+            this.toolStripButton3,
+            this.toolStripSeparator1,
+            this.toolStripButton1,
+            this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(35, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(87, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripButton1
@@ -299,12 +325,65 @@
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton3.Text = "toolStripButton3";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
+            // openInFolderToolStripMenuItem
+            // 
+            this.openInFolderToolStripMenuItem.Name = "openInFolderToolStripMenuItem";
+            this.openInFolderToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.openInFolderToolStripMenuItem.Text = "Open in Folder";
+            this.openInFolderToolStripMenuItem.Click += new System.EventHandler(this.openInFolderToolStripMenuItem_Click);
+            // 
+            // tbFolderName
+            // 
+            this.tbFolderName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbFolderName.Location = new System.Drawing.Point(1, 0);
+            this.tbFolderName.Name = "tbFolderName";
+            this.tbFolderName.Size = new System.Drawing.Size(584, 20);
+            this.tbFolderName.TabIndex = 7;
+            // 
+            // btnCopyFolderName
+            // 
+            this.btnCopyFolderName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCopyFolderName.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyFolderName.Image")));
+            this.btnCopyFolderName.Location = new System.Drawing.Point(557, 0);
+            this.btnCopyFolderName.Name = "btnCopyFolderName";
+            this.btnCopyFolderName.Size = new System.Drawing.Size(25, 25);
+            this.btnCopyFolderName.TabIndex = 8;
+            this.btnCopyFolderName.UseVisualStyleBackColor = true;
+            this.btnCopyFolderName.Click += new System.EventHandler(this.btnCopyFolderName_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(697, 417);
+            this.ClientSize = new System.Drawing.Size(732, 432);
             this.Controls.Add(this.toolStripContainer1);
             this.MinimumSize = new System.Drawing.Size(450, 350);
             this.Name = "Form1";
@@ -350,9 +429,16 @@
         private System.Windows.Forms.Button btnCopyDesc;
         private System.Windows.Forms.Button btnCopyTitle;
         private System.Windows.Forms.TabPage tabDoorsign;
-        private System.Windows.Forms.Button btnAvailable;
+        private System.Windows.Forms.Button ButtonAvailable;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.Button ButtonRecording;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem openInFolderToolStripMenuItem;
+        private System.Windows.Forms.TextBox tbFolderName;
+        private System.Windows.Forms.Button btnCopyFolderName;
     }
 }
 
