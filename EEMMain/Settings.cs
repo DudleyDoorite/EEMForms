@@ -27,6 +27,20 @@ namespace EEMMain
                 }
             }
         }
+        private string _capturesFolder;
+        public string CapturesFolder
+        {
+            get { return _capturesFolder; }
+            set
+            {
+                if (value != _capturesFolder)
+                {
+                    _capturesFolder = value;
+                    this.IsDirty = true;
+                    OnSettingsChangedEvent(new SettingsEventArg("CapturesFolder"));
+                }
+            }
+        }
         private String _descriptionFile;
         public String DescriptionFile
         {
@@ -56,6 +70,7 @@ namespace EEMMain
         public void LoadSettings()
         {
             this.BaseFolder = ReadSetting("BaseFolder");
+            this.CapturesFolder = ReadSetting("CapturesFolder");
             this.DescriptionFile = ReadSetting("DescriptionFile");
             this.FFMpegPath = ReadSetting("FFMpegPath");
             this.IsDirty = false;
@@ -101,6 +116,7 @@ namespace EEMMain
         public void UpdateSettings()
         {
             AddUpdateSettings("BaseFolder", this.BaseFolder);
+            AddUpdateSettings("CapturesFolder", this.CapturesFolder);
             AddUpdateSettings("DescriptionFile", this.DescriptionFile);
             AddUpdateSettings("FFMpegPath", this.FFMpegPath);
             this.IsDirty = false;

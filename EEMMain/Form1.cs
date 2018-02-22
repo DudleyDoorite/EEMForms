@@ -142,11 +142,15 @@ namespace EEMMain
         private void pullFilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //look in captures folder for *.mkv files
+            string[] fileEntries = Directory.GetFiles(mySettings.CapturesFolder, "*.mkv");
 
             //for each one execute this command:
-            //C:\Users\epikt\OneDrive\Apps\ffmpeg\bin\ffmpeg.exe -i "[filename].mkv" -c:v copy -c:a  pcm_s16le -map 0:0 -map 0:1 -map 0:2 -map 0:3 "[seledcted folder]\[filename].mov"
-
-            //if all went well, delete the original file from the captures folder
+            foreach (string fileName in fileEntries)
+            {
+                System.Diagnostics.Process.Start("cmd.exe","/c " + string.Format(mySettings.FFMpegPath, mySettings.BaseFolder, curEpisode.FolderName, Path.GetFileNameWithoutExtension(fileName), mySettings.CapturesFolder));
+            }
+            
+                //if all went well, delete the original file(s) from the captures folder
         }
 
         private void pullSaveGameToolStripMenuItem_Click(object sender, EventArgs e)
