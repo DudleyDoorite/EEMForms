@@ -47,6 +47,10 @@ namespace EEMMain
 
             //Create Events
             treeView1.AfterSelect += TreeView1_AfterSelect;
+
+            //Load first episode
+            TreeNode FirstNode = treeView1.Nodes[0];
+            treeView1.SelectedNode = FirstNode;
         }
 
         private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
@@ -57,7 +61,7 @@ namespace EEMMain
                 curEpisode.Description = tbDescription.Text;
                 curEpisode.Tags = tbTags.Text;
                 curEpisode.SaveGameFolder = tbSaveGameFolder.Text;
-                curEpisode.FolderName = tbFolderName.Text;            
+                curEpisode.FolderName = TSLFolderName.Text;            
                 
                 curEpisode.Save(curEpisode.Path);
             }
@@ -78,7 +82,7 @@ namespace EEMMain
             this.tbDescription.Text = curEpisode.Description;
             this.tbTags.Text = curEpisode.Tags;
             this.tbSaveGameFolder.Text = curEpisode.SaveGameFolder;
-            this.tbFolderName.Text = curEpisode.FolderName;
+            this.TSLFolderName.Text = curEpisode.FolderName;
         }
 
         private void LoadSettingValues()
@@ -142,15 +146,30 @@ namespace EEMMain
         private void pullFilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //look in captures folder for *.mkv files
-            string[] fileEntries = Directory.GetFiles(mySettings.CapturesFolder, "*.mkv");
-
+            string[] fileEntries = Directory.GetFiles(mySettings.CapturesFolder);
+            string ext;
             //for each one execute this command:
             foreach (string fileName in fileEntries)
             {
-                System.Diagnostics.Process.Start("cmd.exe","/c " + string.Format(mySettings.FFMpegPath, mySettings.BaseFolder, curEpisode.FolderName, Path.GetFileNameWithoutExtension(fileName), mySettings.CapturesFolder));
+                ext=Path.GetExtension(fileName);
+                switch (ext)
+                {
+                    case ".mkv":
+                        var process = System.Diagnostics.Process.Start("cmd.exe", "/c " + string.Format(mySettings.FFMpegPath, mySettings.BaseFolder, curEpisode.FolderName, Path.GetFileNameWithoutExtension(fileName), mySettings.CapturesFolder));
+                        process.WaitForExit();
+                        File.Move(fileName, mySettings.CapturesFolder + "\\done\\" + Path.GetFileName(fileName));
+                        break;
+                    case ".lnk":
+                    case ".bat":
+                        //skip shortcuts and batch files
+                        break;
+                    default:
+                    File.Move(fileName, mySettings.BaseFolder +"\\"+ curEpisode.FolderName+"\\"+ Path.GetFileName(fileName));
+                        break;
+                }
             }
             
-                //if all went well, delete the original file(s) from the captures folder
+
         }
 
         private void pullSaveGameToolStripMenuItem_Click(object sender, EventArgs e)
@@ -201,7 +220,7 @@ namespace EEMMain
 
         private void btnCopyFolderName_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(this.tbFolderName.Text);
+            Clipboard.SetText(this.TSLFolderName.Text);
         }
 
         private void btnCopyTitle_Click(object sender, EventArgs e)
@@ -236,7 +255,7 @@ namespace EEMMain
             mySign.Hide();
             mySign.Location = new Point(1920, 0);
             mySign.Show(this);
-            //TODO: mySign.LabelTitle.text = "Recording";
+            //mySign.ChangeSign (System.Drawing.Color.Yellow, "Recording", "Don't knock, just quietly open the door and wait for me to get to a good stopping point.");
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -252,6 +271,26 @@ namespace EEMMain
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("e:\\videos\\");
+        }
+
+        private void TSBSave_Click(object sender, EventArgs e)
+        {
+            curEpisode.Title = tbTitle.Text;
+            curEpisode.Description = tbDescription.Text;
+            curEpisode.Tags = tbTags.Text;
+            curEpisode.SaveGameFolder = tbSaveGameFolder.Text;
+            curEpisode.FolderName = TSLFolderName.Text;
+            curEpisode.Save(curEpisode.Path);
+        }
+
+        private void TSBRevert_Click(object sender, EventArgs e)
+        {
+            curEpisode.Load(curEpisode.Path);
+            this.tbTitle.Text = curEpisode.Title;
+            this.tbDescription.Text = curEpisode.Description;
+            this.tbTags.Text = curEpisode.Tags;
+            this.tbSaveGameFolder.Text = curEpisode.SaveGameFolder;
+            this.TSLFolderName.Text = curEpisode.FolderName;
         }
     }
 }

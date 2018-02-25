@@ -16,5 +16,13 @@ namespace EEMMain
         {
             InitializeComponent();
         }
+
+        public void ChangeSign (Color NewColor, string NewTitle, string NewExtra)
+        {
+            LabelTitle.ForeColor = NewColor;
+            LabelTitle.Text = NewTitle;
+            LabelExtra.Text = NewExtra;
+        }
     }
+
 }
