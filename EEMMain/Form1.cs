@@ -292,5 +292,23 @@ namespace EEMMain
             this.tbSaveGameFolder.Text = curEpisode.SaveGameFolder;
             this.TSLFolderName.Text = curEpisode.FolderName;
         }
+
+        private void TSLFolderName_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(Path.GetDirectoryName(curEpisode.Path));
+        }
+
+        private void TSBCopyFolderName_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(this.TSLFolderName.Text);
+        }
+
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                treeView1.SelectedNode = e.Node;
+            }
+        }
     }
 }
