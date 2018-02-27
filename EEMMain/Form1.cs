@@ -184,7 +184,7 @@ namespace EEMMain
         private void cloneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Ask what the new folder name is
-            string newFolderName = curEpisode.FolderName;
+            string newFolderName = Util.GetNextFolder(curEpisode.FolderName);
             string tmpNewFolderPath = string.Empty;
 
             if (string.IsNullOrEmpty(curEpisode.Path))
