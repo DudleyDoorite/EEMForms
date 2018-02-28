@@ -16,7 +16,7 @@ namespace EEMMain
     {
         EEMSettings mySettings = new EEMSettings();
         Episode curEpisode = new Episode();
-        Form mySign = new FormSign();
+        FormSign mySign = new FormSign();
 
         public Form1()
         {
@@ -255,7 +255,7 @@ namespace EEMMain
             mySign.Hide();
             mySign.Location = new Point(1920, 0);
             mySign.Show(this);
-            //mySign.ChangeSign (System.Drawing.Color.Yellow, "Recording", "Don't knock, just quietly open the door and wait for me to get to a good stopping point.");
+            mySign.ChangeSign(System.Drawing.Color.Yellow, "Recording", "Don't knock, just quietly open the door and wait for me to get to a good stopping point.");
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
