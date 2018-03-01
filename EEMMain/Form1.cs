@@ -248,6 +248,10 @@ namespace EEMMain
             mySign.Hide();
             mySign.Location = new Point(1920,0);
             mySign.Show(this);
+            TBSignTitle.Text = "Available";
+            TBSignExtra.Text = "Come on in, I'm not busy.";
+            CBOSignColor.Text = "Lime";
+            mySign.ChangeSign(Color.FromName(CBOSignColor.Text), TBSignTitle.Text, TBSignExtra.Text);
         }
 
         private void ButtonRecording_Click(object sender, EventArgs e)
@@ -255,7 +259,21 @@ namespace EEMMain
             mySign.Hide();
             mySign.Location = new Point(1920, 0);
             mySign.Show(this);
-            mySign.ChangeSign(System.Drawing.Color.Yellow, "Recording", "Don't knock, just quietly open the door and wait for me to get to a good stopping point.");
+            TBSignTitle.Text = "Recording";
+            TBSignExtra.Text = "Don't knock, just quietly open the door and wait for me to get to a good stopping point.";
+            CBOSignColor.Text = "Yellow";
+            mySign.ChangeSign(Color.FromName(CBOSignColor.Text), TBSignTitle.Text, TBSignExtra.Text);
+        }
+
+        private void ButtonStreaming_Click(object sender, EventArgs e)
+        {
+            mySign.Hide();
+            mySign.Location = new Point(1920, 0);
+            mySign.Show(this);
+            TBSignTitle.Text = "Streaming";
+            TBSignExtra.Text = "Only enter if it's an emergency. It would be better to text me.";
+            CBOSignColor.Text = "Red";
+            mySign.ChangeSign(Color.FromName(CBOSignColor.Text), TBSignTitle.Text, TBSignExtra.Text);
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -309,6 +327,12 @@ namespace EEMMain
             {
                 treeView1.SelectedNode = e.Node;
             }
+        }
+
+        private void CBOSignColor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CBOSignColor.BackColor = Color.FromName(CBOSignColor.Text);
+            mySign.ChangeSign(Color.FromName(CBOSignColor.Text),TBSignTitle.Text,TBSignExtra.Text);
         }
     }
 }

@@ -62,6 +62,11 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.TBSignTitle = new System.Windows.Forms.TextBox();
+            this.TBSignExtra = new System.Windows.Forms.TextBox();
+            this.CBOSignColor = new System.Windows.Forms.ComboBox();
+            this.ButtonStreaming = new System.Windows.Forms.Button();
+            this.CBAutoDetect = new System.Windows.Forms.CheckBox();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -83,11 +88,11 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tabControl1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(758, 474);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(623, 470);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(758, 499);
+            this.toolStripContainer1.Size = new System.Drawing.Size(623, 495);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -103,7 +108,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(758, 474);
+            this.tabControl1.Size = new System.Drawing.Size(623, 470);
             this.tabControl1.TabIndex = 0;
             // 
             // tabEpisodes
@@ -213,7 +218,7 @@
             // 
             this.btnCopyTags.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCopyTags.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyTags.Image")));
-            this.btnCopyTags.Location = new System.Drawing.Point(591, 349);
+            this.btnCopyTags.Location = new System.Drawing.Point(593, 349);
             this.btnCopyTags.Name = "btnCopyTags";
             this.btnCopyTags.Size = new System.Drawing.Size(25, 25);
             this.btnCopyTags.TabIndex = 6;
@@ -224,7 +229,7 @@
             // 
             this.btnCopyDesc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCopyDesc.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyDesc.Image")));
-            this.btnCopyDesc.Location = new System.Drawing.Point(591, 67);
+            this.btnCopyDesc.Location = new System.Drawing.Point(593, 67);
             this.btnCopyDesc.Name = "btnCopyDesc";
             this.btnCopyDesc.Size = new System.Drawing.Size(25, 25);
             this.btnCopyDesc.TabIndex = 5;
@@ -235,7 +240,7 @@
             // 
             this.btnCopyTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCopyTitle.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyTitle.Image")));
-            this.btnCopyTitle.Location = new System.Drawing.Point(591, 29);
+            this.btnCopyTitle.Location = new System.Drawing.Point(593, 29);
             this.btnCopyTitle.Name = "btnCopyTitle";
             this.btnCopyTitle.Size = new System.Drawing.Size(25, 25);
             this.btnCopyTitle.TabIndex = 4;
@@ -248,7 +253,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbSaveGameFolder.Location = new System.Drawing.Point(1, 417);
             this.tbSaveGameFolder.Name = "tbSaveGameFolder";
-            this.tbSaveGameFolder.Size = new System.Drawing.Size(618, 20);
+            this.tbSaveGameFolder.Size = new System.Drawing.Size(620, 20);
             this.tbSaveGameFolder.TabIndex = 3;
             // 
             // tbTags
@@ -258,7 +263,7 @@
             this.tbTags.Location = new System.Drawing.Point(1, 346);
             this.tbTags.Multiline = true;
             this.tbTags.Name = "tbTags";
-            this.tbTags.Size = new System.Drawing.Size(618, 65);
+            this.tbTags.Size = new System.Drawing.Size(620, 65);
             this.tbTags.TabIndex = 2;
             // 
             // tbDescription
@@ -269,7 +274,7 @@
             this.tbDescription.Location = new System.Drawing.Point(1, 64);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(618, 273);
+            this.tbDescription.Size = new System.Drawing.Size(620, 273);
             this.tbDescription.TabIndex = 1;
             // 
             // tbTitle
@@ -279,7 +284,7 @@
             this.tbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbTitle.Location = new System.Drawing.Point(1, 26);
             this.tbTitle.Name = "tbTitle";
-            this.tbTitle.Size = new System.Drawing.Size(618, 32);
+            this.tbTitle.Size = new System.Drawing.Size(620, 32);
             this.tbTitle.TabIndex = 0;
             // 
             // toolStripEpisode
@@ -341,12 +346,17 @@
             // 
             // tabDoorsign
             // 
+            this.tabDoorsign.Controls.Add(this.CBAutoDetect);
+            this.tabDoorsign.Controls.Add(this.ButtonStreaming);
+            this.tabDoorsign.Controls.Add(this.CBOSignColor);
+            this.tabDoorsign.Controls.Add(this.TBSignExtra);
+            this.tabDoorsign.Controls.Add(this.TBSignTitle);
             this.tabDoorsign.Controls.Add(this.ButtonRecording);
             this.tabDoorsign.Controls.Add(this.ButtonAvailable);
             this.tabDoorsign.Location = new System.Drawing.Point(4, 22);
             this.tabDoorsign.Name = "tabDoorsign";
             this.tabDoorsign.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDoorsign.Size = new System.Drawing.Size(750, 448);
+            this.tabDoorsign.Size = new System.Drawing.Size(615, 444);
             this.tabDoorsign.TabIndex = 2;
             this.tabDoorsign.Text = "Door Sign";
             this.tabDoorsign.UseVisualStyleBackColor = true;
@@ -385,7 +395,7 @@
             this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(758, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(623, 25);
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 0;
             // 
@@ -421,11 +431,70 @@
             this.toolStripButton2.Text = "Panzoid";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
+            // TBSignTitle
+            // 
+            this.TBSignTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TBSignTitle.Location = new System.Drawing.Point(9, 62);
+            this.TBSignTitle.Name = "TBSignTitle";
+            this.TBSignTitle.Size = new System.Drawing.Size(481, 20);
+            this.TBSignTitle.TabIndex = 1;
+            // 
+            // TBSignExtra
+            // 
+            this.TBSignExtra.AcceptsReturn = true;
+            this.TBSignExtra.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TBSignExtra.Location = new System.Drawing.Point(8, 88);
+            this.TBSignExtra.Multiline = true;
+            this.TBSignExtra.Name = "TBSignExtra";
+            this.TBSignExtra.Size = new System.Drawing.Size(599, 348);
+            this.TBSignExtra.TabIndex = 1;
+            // 
+            // CBOSignColor
+            // 
+            this.CBOSignColor.FormattingEnabled = true;
+            this.CBOSignColor.Items.AddRange(new object[] {
+            "Lime",
+            "Yellow",
+            "Red",
+            "Blue",
+            "Grey",
+            "Black"});
+            this.CBOSignColor.Location = new System.Drawing.Point(497, 62);
+            this.CBOSignColor.Name = "CBOSignColor";
+            this.CBOSignColor.Size = new System.Drawing.Size(110, 21);
+            this.CBOSignColor.TabIndex = 2;
+            this.CBOSignColor.SelectedIndexChanged += new System.EventHandler(this.CBOSignColor_SelectedIndexChanged);
+            // 
+            // ButtonStreaming
+            // 
+            this.ButtonStreaming.BackColor = System.Drawing.Color.Red;
+            this.ButtonStreaming.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonStreaming.Location = new System.Drawing.Point(290, 7);
+            this.ButtonStreaming.Name = "ButtonStreaming";
+            this.ButtonStreaming.Size = new System.Drawing.Size(135, 49);
+            this.ButtonStreaming.TabIndex = 3;
+            this.ButtonStreaming.Text = "Streaming";
+            this.ButtonStreaming.UseVisualStyleBackColor = false;
+            this.ButtonStreaming.Click += new System.EventHandler(this.ButtonStreaming_Click);
+            // 
+            // CBAutoDetect
+            // 
+            this.CBAutoDetect.AutoSize = true;
+            this.CBAutoDetect.Location = new System.Drawing.Point(497, 39);
+            this.CBAutoDetect.Name = "CBAutoDetect";
+            this.CBAutoDetect.Size = new System.Drawing.Size(80, 17);
+            this.CBAutoDetect.TabIndex = 4;
+            this.CBAutoDetect.Text = "AutoDetect";
+            this.CBAutoDetect.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(758, 499);
+            this.ClientSize = new System.Drawing.Size(623, 495);
             this.Controls.Add(this.toolStripContainer1);
             this.MinimumSize = new System.Drawing.Size(450, 350);
             this.Name = "Form1";
@@ -447,6 +516,7 @@
             this.toolStripEpisode.ResumeLayout(false);
             this.toolStripEpisode.PerformLayout();
             this.tabDoorsign.ResumeLayout(false);
+            this.tabDoorsign.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -487,6 +557,11 @@
         private System.Windows.Forms.ToolStripButton TSBRevert;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton TSBCopyFolderName;
+        private System.Windows.Forms.TextBox TBSignTitle;
+        private System.Windows.Forms.ComboBox CBOSignColor;
+        private System.Windows.Forms.TextBox TBSignExtra;
+        private System.Windows.Forms.Button ButtonStreaming;
+        private System.Windows.Forms.CheckBox CBAutoDetect;
     }
 }
 
