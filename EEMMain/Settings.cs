@@ -57,6 +57,54 @@ namespace EEMMain
         }
         public string FFMpegPath { get; set; }
 
+        private string _MainFormLocX = "0";        
+        public string MainFormLocX
+        {
+            get { return _MainFormLocX; }
+            set
+            {
+                _MainFormLocX = value;
+                this.IsDirty = true;
+                OnSettingsChangedEvent(new SettingsEventArg("MainFormLocX"));
+            }
+        }
+
+        private string _MainFormLocY = "0";
+        public string MainFormLocY
+        {
+            get { return _MainFormLocY; }
+            set
+            {
+                _MainFormLocY = value;
+                this.IsDirty = true;
+                OnSettingsChangedEvent(new SettingsEventArg("MainFormLocY"));
+            }
+        }
+
+        private string _MainFormWidth;
+        public string MainFormWidth
+        {
+            get { return _MainFormWidth; }
+            set
+            {
+                _MainFormWidth = value;
+                this.IsDirty = true;
+                OnSettingsChangedEvent(new SettingsEventArg("MainFormWidth"));
+            }
+        }
+
+
+        private string _MainFormHeight;
+        public string MainFormHeight
+        {
+            get { return _MainFormHeight; }
+            set
+            {
+                _MainFormHeight = value;
+                this.IsDirty = true;
+                OnSettingsChangedEvent(new SettingsEventArg("MainFormHeight"));
+            }
+        }
 
 
         public bool IsDirty { get; set; }
@@ -69,10 +117,16 @@ namespace EEMMain
 
         public void LoadSettings()
         {
-            this.BaseFolder = ReadSetting("BaseFolder");
-            this.CapturesFolder = ReadSetting("CapturesFolder");
-            this.DescriptionFile = ReadSetting("DescriptionFile");
+            this._baseFolder = ReadSetting("BaseFolder");
+            this._capturesFolder = ReadSetting("CapturesFolder");
+            this._descriptionFile = ReadSetting("DescriptionFile");
             this.FFMpegPath = ReadSetting("FFMpegPath");
+            this._MainFormLocX = ReadSetting("MainFormLocX");
+            this._MainFormLocY = ReadSetting("MainFormLocY");
+            this._MainFormWidth = ReadSetting("MainFormWidth");
+            this._MainFormHeight = ReadSetting("MainFormHeight");
+
+
             this.IsDirty = false;
         }
         private string ReadSetting(string key)
@@ -119,6 +173,10 @@ namespace EEMMain
             AddUpdateSettings("CapturesFolder", this.CapturesFolder);
             AddUpdateSettings("DescriptionFile", this.DescriptionFile);
             AddUpdateSettings("FFMpegPath", this.FFMpegPath);
+            AddUpdateSettings("MainFormLocX", this._MainFormLocX);
+            AddUpdateSettings("MainFormLocY", this._MainFormLocY);
+            AddUpdateSettings("MainFormWidth", this._MainFormWidth);
+            AddUpdateSettings("MainFormHeight", this._MainFormHeight);
             this.IsDirty = false;
         }
 

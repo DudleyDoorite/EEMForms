@@ -47,10 +47,27 @@ namespace EEMMain
 
             //Create Events
             treeView1.AfterSelect += TreeView1_AfterSelect;
+            this.LocationChanged += Form1_LocationChanged;
+            this.SizeChanged += Form1_SizeChanged;
+
 
             //Load first episode
             TreeNode FirstNode = treeView1.Nodes[0];
             treeView1.SelectedNode = FirstNode;
+        }
+
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            mySettings.MainFormWidth = this.Width.ToString() ;
+            mySettings.MainFormHeight = this.Height.ToString();
+            mySettings.UpdateSettings();
+        }
+
+        private void Form1_LocationChanged(object sender, EventArgs e)
+        {
+            mySettings.MainFormLocX = this.Location.X.ToString();
+            mySettings.MainFormLocY = this.Location.Y.ToString();
+            mySettings.UpdateSettings();
         }
 
         private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
@@ -89,6 +106,16 @@ namespace EEMMain
         {
             //Load all of the settings
             mySettings.LoadSettings();
+            try
+            {
+                this.SetDesktopLocation(int.Parse(mySettings.MainFormLocX), int.Parse(mySettings.MainFormLocY));
+                this.Width = int.Parse(mySettings.MainFormWidth);
+                this.Height = int.Parse(mySettings.MainFormHeight);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("Failure Setting Value : {0}", ex.Message));
+            }
         }
 
         private void LoadTreeView(TreeView tree)
