@@ -245,22 +245,22 @@ namespace EEMMain
             ScanBaseFolder();
         }
 
-        private void btnCopyFolderName_Click(object sender, EventArgs e)
+        private void TSBCopyFolderName_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(this.TSLFolderName.Text);
         }
 
-        private void btnCopyTitle_Click(object sender, EventArgs e)
+        private void TSBCopyTitle_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(this.tbTitle.Text);
         }
 
-        private void btnCopyDesc_Click(object sender, EventArgs e)
+        private void TSBCopyDesc_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(this.tbDescription.Text);
         }
 
-        private void btnCopyTags_Click(object sender, EventArgs e)
+        private void TSBCopyTags_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(this.tbTags.Text);
         }
@@ -341,11 +341,6 @@ namespace EEMMain
         private void TSLFolderName_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(Path.GetDirectoryName(curEpisode.Path));
-        }
-
-        private void TSBCopyFolderName_Click(object sender, EventArgs e)
-        {
-            Clipboard.SetText(this.TSLFolderName.Text);
         }
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)

@@ -41,9 +41,6 @@
             this.archiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pullFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pullSaveGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnCopyTags = new System.Windows.Forms.Button();
-            this.btnCopyDesc = new System.Windows.Forms.Button();
-            this.btnCopyTitle = new System.Windows.Forms.Button();
             this.tbSaveGameFolder = new System.Windows.Forms.TextBox();
             this.tbTags = new System.Windows.Forms.TextBox();
             this.tbDescription = new System.Windows.Forms.TextBox();
@@ -54,7 +51,15 @@
             this.TSBSave = new System.Windows.Forms.ToolStripButton();
             this.TSBRevert = new System.Windows.Forms.ToolStripButton();
             this.TSBCopyFolderName = new System.Windows.Forms.ToolStripButton();
+            this.TSBCopyTitle = new System.Windows.Forms.ToolStripButton();
+            this.TSBCopyDesc = new System.Windows.Forms.ToolStripButton();
+            this.TSBCopyTags = new System.Windows.Forms.ToolStripButton();
             this.tabDoorsign = new System.Windows.Forms.TabPage();
+            this.CBAutoDetect = new System.Windows.Forms.CheckBox();
+            this.ButtonStreaming = new System.Windows.Forms.Button();
+            this.CBOSignColor = new System.Windows.Forms.ComboBox();
+            this.TBSignExtra = new System.Windows.Forms.TextBox();
+            this.TBSignTitle = new System.Windows.Forms.TextBox();
             this.ButtonRecording = new System.Windows.Forms.Button();
             this.ButtonAvailable = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -62,11 +67,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.TBSignTitle = new System.Windows.Forms.TextBox();
-            this.TBSignExtra = new System.Windows.Forms.TextBox();
-            this.CBOSignColor = new System.Windows.Forms.ComboBox();
-            this.ButtonStreaming = new System.Windows.Forms.Button();
-            this.CBAutoDetect = new System.Windows.Forms.CheckBox();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -117,7 +117,7 @@
             this.tabEpisodes.Location = new System.Drawing.Point(4, 22);
             this.tabEpisodes.Name = "tabEpisodes";
             this.tabEpisodes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEpisodes.Size = new System.Drawing.Size(750, 448);
+            this.tabEpisodes.Size = new System.Drawing.Size(615, 444);
             this.tabEpisodes.TabIndex = 1;
             this.tabEpisodes.Text = "Episodes";
             this.tabEpisodes.UseVisualStyleBackColor = true;
@@ -138,15 +138,12 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.btnCopyTags);
-            this.splitContainer1.Panel2.Controls.Add(this.btnCopyDesc);
-            this.splitContainer1.Panel2.Controls.Add(this.btnCopyTitle);
             this.splitContainer1.Panel2.Controls.Add(this.tbSaveGameFolder);
             this.splitContainer1.Panel2.Controls.Add(this.tbTags);
             this.splitContainer1.Panel2.Controls.Add(this.tbDescription);
             this.splitContainer1.Panel2.Controls.Add(this.tbTitle);
             this.splitContainer1.Panel2.Controls.Add(this.toolStripEpisode);
-            this.splitContainer1.Size = new System.Drawing.Size(744, 442);
+            this.splitContainer1.Size = new System.Drawing.Size(609, 438);
             this.splitContainer1.SplitterDistance = 126;
             this.splitContainer1.SplitterIncrement = 10;
             this.splitContainer1.SplitterWidth = 2;
@@ -163,7 +160,7 @@
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
             this.treeView1.ShowRootLines = false;
-            this.treeView1.Size = new System.Drawing.Size(123, 437);
+            this.treeView1.Size = new System.Drawing.Size(123, 433);
             this.treeView1.TabIndex = 0;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             // 
@@ -214,56 +211,23 @@
             this.pullSaveGameToolStripMenuItem.Text = "Pull Save Game";
             this.pullSaveGameToolStripMenuItem.Click += new System.EventHandler(this.pullSaveGameToolStripMenuItem_Click);
             // 
-            // btnCopyTags
-            // 
-            this.btnCopyTags.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCopyTags.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyTags.Image")));
-            this.btnCopyTags.Location = new System.Drawing.Point(593, 349);
-            this.btnCopyTags.Name = "btnCopyTags";
-            this.btnCopyTags.Size = new System.Drawing.Size(25, 25);
-            this.btnCopyTags.TabIndex = 6;
-            this.btnCopyTags.UseVisualStyleBackColor = true;
-            this.btnCopyTags.Click += new System.EventHandler(this.btnCopyTags_Click);
-            // 
-            // btnCopyDesc
-            // 
-            this.btnCopyDesc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCopyDesc.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyDesc.Image")));
-            this.btnCopyDesc.Location = new System.Drawing.Point(593, 67);
-            this.btnCopyDesc.Name = "btnCopyDesc";
-            this.btnCopyDesc.Size = new System.Drawing.Size(25, 25);
-            this.btnCopyDesc.TabIndex = 5;
-            this.btnCopyDesc.UseVisualStyleBackColor = true;
-            this.btnCopyDesc.Click += new System.EventHandler(this.btnCopyDesc_Click);
-            // 
-            // btnCopyTitle
-            // 
-            this.btnCopyTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCopyTitle.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyTitle.Image")));
-            this.btnCopyTitle.Location = new System.Drawing.Point(593, 29);
-            this.btnCopyTitle.Name = "btnCopyTitle";
-            this.btnCopyTitle.Size = new System.Drawing.Size(25, 25);
-            this.btnCopyTitle.TabIndex = 4;
-            this.btnCopyTitle.UseVisualStyleBackColor = true;
-            this.btnCopyTitle.Click += new System.EventHandler(this.btnCopyTitle_Click);
-            // 
             // tbSaveGameFolder
             // 
             this.tbSaveGameFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbSaveGameFolder.Location = new System.Drawing.Point(1, 417);
+            this.tbSaveGameFolder.Location = new System.Drawing.Point(1, 413);
             this.tbSaveGameFolder.Name = "tbSaveGameFolder";
-            this.tbSaveGameFolder.Size = new System.Drawing.Size(620, 20);
+            this.tbSaveGameFolder.Size = new System.Drawing.Size(475, 20);
             this.tbSaveGameFolder.TabIndex = 3;
             // 
             // tbTags
             // 
             this.tbTags.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbTags.Location = new System.Drawing.Point(1, 346);
+            this.tbTags.Location = new System.Drawing.Point(1, 342);
             this.tbTags.Multiline = true;
             this.tbTags.Name = "tbTags";
-            this.tbTags.Size = new System.Drawing.Size(620, 65);
+            this.tbTags.Size = new System.Drawing.Size(475, 65);
             this.tbTags.TabIndex = 2;
             // 
             // tbDescription
@@ -274,7 +238,7 @@
             this.tbDescription.Location = new System.Drawing.Point(1, 64);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(620, 273);
+            this.tbDescription.Size = new System.Drawing.Size(475, 269);
             this.tbDescription.TabIndex = 1;
             // 
             // tbTitle
@@ -284,21 +248,25 @@
             this.tbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbTitle.Location = new System.Drawing.Point(1, 26);
             this.tbTitle.Name = "tbTitle";
-            this.tbTitle.Size = new System.Drawing.Size(620, 32);
+            this.tbTitle.Size = new System.Drawing.Size(475, 32);
             this.tbTitle.TabIndex = 0;
             // 
             // toolStripEpisode
             // 
             this.toolStripEpisode.CanOverflow = false;
+            this.toolStripEpisode.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStripEpisode.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSLFolderName,
             this.toolStripSeparator2,
             this.TSBSave,
             this.TSBRevert,
+            this.TSBCopyTags,
+            this.TSBCopyDesc,
+            this.TSBCopyTitle,
             this.TSBCopyFolderName});
             this.toolStripEpisode.Location = new System.Drawing.Point(0, 0);
             this.toolStripEpisode.Name = "toolStripEpisode";
-            this.toolStripEpisode.Size = new System.Drawing.Size(616, 25);
+            this.toolStripEpisode.Size = new System.Drawing.Size(481, 25);
             this.toolStripEpisode.TabIndex = 9;
             this.toolStripEpisode.Text = "toolStrip2";
             // 
@@ -341,8 +309,38 @@
             this.TSBCopyFolderName.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TSBCopyFolderName.Name = "TSBCopyFolderName";
             this.TSBCopyFolderName.Size = new System.Drawing.Size(23, 22);
-            this.TSBCopyFolderName.Text = "Copy FolderName";
+            this.TSBCopyFolderName.Text = "Copy Folder Name";
             this.TSBCopyFolderName.Click += new System.EventHandler(this.TSBCopyFolderName_Click);
+            // 
+            // TSBCopyTitle
+            // 
+            this.TSBCopyTitle.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.TSBCopyTitle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TSBCopyTitle.Image = ((System.Drawing.Image)(resources.GetObject("TSBCopyTitle.Image")));
+            this.TSBCopyTitle.Name = "TSBCopyTitle";
+            this.TSBCopyTitle.Size = new System.Drawing.Size(23, 22);
+            this.TSBCopyTitle.Text = "Copy Title";
+            this.TSBCopyTitle.Click += new System.EventHandler(this.TSBCopyTitle_Click);
+            // 
+            // TSBCopyDesc
+            // 
+            this.TSBCopyDesc.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.TSBCopyDesc.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TSBCopyDesc.Image = ((System.Drawing.Image)(resources.GetObject("TSBCopyDesc.Image")));
+            this.TSBCopyDesc.Name = "TSBCopyDesc";
+            this.TSBCopyDesc.Size = new System.Drawing.Size(23, 22);
+            this.TSBCopyDesc.Text = "Copy Description";
+            this.TSBCopyDesc.Click += new System.EventHandler(this.TSBCopyDesc_Click);
+            // 
+            // TSBCopyTags
+            // 
+            this.TSBCopyTags.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.TSBCopyTags.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TSBCopyTags.Image = ((System.Drawing.Image)(resources.GetObject("TSBCopyTags.Image")));
+            this.TSBCopyTags.Name = "TSBCopyTags";
+            this.TSBCopyTags.Size = new System.Drawing.Size(23, 22);
+            this.TSBCopyTags.Text = "Copy Tags";
+            this.TSBCopyTags.Click += new System.EventHandler(this.TSBCopyTags_Click);
             // 
             // tabDoorsign
             // 
@@ -360,6 +358,65 @@
             this.tabDoorsign.TabIndex = 2;
             this.tabDoorsign.Text = "Door Sign";
             this.tabDoorsign.UseVisualStyleBackColor = true;
+            // 
+            // CBAutoDetect
+            // 
+            this.CBAutoDetect.AutoSize = true;
+            this.CBAutoDetect.Location = new System.Drawing.Point(497, 39);
+            this.CBAutoDetect.Name = "CBAutoDetect";
+            this.CBAutoDetect.Size = new System.Drawing.Size(80, 17);
+            this.CBAutoDetect.TabIndex = 4;
+            this.CBAutoDetect.Text = "AutoDetect";
+            this.CBAutoDetect.UseVisualStyleBackColor = true;
+            // 
+            // ButtonStreaming
+            // 
+            this.ButtonStreaming.BackColor = System.Drawing.Color.Red;
+            this.ButtonStreaming.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonStreaming.Location = new System.Drawing.Point(290, 7);
+            this.ButtonStreaming.Name = "ButtonStreaming";
+            this.ButtonStreaming.Size = new System.Drawing.Size(135, 49);
+            this.ButtonStreaming.TabIndex = 3;
+            this.ButtonStreaming.Text = "Streaming";
+            this.ButtonStreaming.UseVisualStyleBackColor = false;
+            this.ButtonStreaming.Click += new System.EventHandler(this.ButtonStreaming_Click);
+            // 
+            // CBOSignColor
+            // 
+            this.CBOSignColor.FormattingEnabled = true;
+            this.CBOSignColor.Items.AddRange(new object[] {
+            "Lime",
+            "Yellow",
+            "Red",
+            "Blue",
+            "Grey",
+            "Black"});
+            this.CBOSignColor.Location = new System.Drawing.Point(497, 62);
+            this.CBOSignColor.Name = "CBOSignColor";
+            this.CBOSignColor.Size = new System.Drawing.Size(110, 21);
+            this.CBOSignColor.TabIndex = 2;
+            this.CBOSignColor.SelectedIndexChanged += new System.EventHandler(this.CBOSignColor_SelectedIndexChanged);
+            // 
+            // TBSignExtra
+            // 
+            this.TBSignExtra.AcceptsReturn = true;
+            this.TBSignExtra.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TBSignExtra.Location = new System.Drawing.Point(8, 88);
+            this.TBSignExtra.Multiline = true;
+            this.TBSignExtra.Name = "TBSignExtra";
+            this.TBSignExtra.Size = new System.Drawing.Size(599, 348);
+            this.TBSignExtra.TabIndex = 1;
+            // 
+            // TBSignTitle
+            // 
+            this.TBSignTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TBSignTitle.Location = new System.Drawing.Point(9, 62);
+            this.TBSignTitle.Name = "TBSignTitle";
+            this.TBSignTitle.Size = new System.Drawing.Size(481, 20);
+            this.TBSignTitle.TabIndex = 1;
             // 
             // ButtonRecording
             // 
@@ -431,65 +488,6 @@
             this.toolStripButton2.Text = "Panzoid";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
-            // TBSignTitle
-            // 
-            this.TBSignTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TBSignTitle.Location = new System.Drawing.Point(9, 62);
-            this.TBSignTitle.Name = "TBSignTitle";
-            this.TBSignTitle.Size = new System.Drawing.Size(481, 20);
-            this.TBSignTitle.TabIndex = 1;
-            // 
-            // TBSignExtra
-            // 
-            this.TBSignExtra.AcceptsReturn = true;
-            this.TBSignExtra.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TBSignExtra.Location = new System.Drawing.Point(8, 88);
-            this.TBSignExtra.Multiline = true;
-            this.TBSignExtra.Name = "TBSignExtra";
-            this.TBSignExtra.Size = new System.Drawing.Size(599, 348);
-            this.TBSignExtra.TabIndex = 1;
-            // 
-            // CBOSignColor
-            // 
-            this.CBOSignColor.FormattingEnabled = true;
-            this.CBOSignColor.Items.AddRange(new object[] {
-            "Lime",
-            "Yellow",
-            "Red",
-            "Blue",
-            "Grey",
-            "Black"});
-            this.CBOSignColor.Location = new System.Drawing.Point(497, 62);
-            this.CBOSignColor.Name = "CBOSignColor";
-            this.CBOSignColor.Size = new System.Drawing.Size(110, 21);
-            this.CBOSignColor.TabIndex = 2;
-            this.CBOSignColor.SelectedIndexChanged += new System.EventHandler(this.CBOSignColor_SelectedIndexChanged);
-            // 
-            // ButtonStreaming
-            // 
-            this.ButtonStreaming.BackColor = System.Drawing.Color.Red;
-            this.ButtonStreaming.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonStreaming.Location = new System.Drawing.Point(290, 7);
-            this.ButtonStreaming.Name = "ButtonStreaming";
-            this.ButtonStreaming.Size = new System.Drawing.Size(135, 49);
-            this.ButtonStreaming.TabIndex = 3;
-            this.ButtonStreaming.Text = "Streaming";
-            this.ButtonStreaming.UseVisualStyleBackColor = false;
-            this.ButtonStreaming.Click += new System.EventHandler(this.ButtonStreaming_Click);
-            // 
-            // CBAutoDetect
-            // 
-            this.CBAutoDetect.AutoSize = true;
-            this.CBAutoDetect.Location = new System.Drawing.Point(497, 39);
-            this.CBAutoDetect.Name = "CBAutoDetect";
-            this.CBAutoDetect.Size = new System.Drawing.Size(80, 17);
-            this.CBAutoDetect.TabIndex = 4;
-            this.CBAutoDetect.Text = "AutoDetect";
-            this.CBAutoDetect.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -539,9 +537,6 @@
         private System.Windows.Forms.ToolStripMenuItem pullFilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pullSaveGameToolStripMenuItem;
         private System.Windows.Forms.TextBox tbSaveGameFolder;
-        private System.Windows.Forms.Button btnCopyTags;
-        private System.Windows.Forms.Button btnCopyDesc;
-        private System.Windows.Forms.Button btnCopyTitle;
         private System.Windows.Forms.TabPage tabDoorsign;
         private System.Windows.Forms.Button ButtonAvailable;
         private System.Windows.Forms.ToolStrip toolStrip1;
@@ -557,6 +552,9 @@
         private System.Windows.Forms.ToolStripButton TSBRevert;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton TSBCopyFolderName;
+        private System.Windows.Forms.ToolStripButton TSBCopyTitle;
+        private System.Windows.Forms.ToolStripButton TSBCopyDesc;
+        private System.Windows.Forms.ToolStripButton TSBCopyTags;
         private System.Windows.Forms.TextBox TBSignTitle;
         private System.Windows.Forms.ComboBox CBOSignColor;
         private System.Windows.Forms.TextBox TBSignExtra;
