@@ -305,7 +305,7 @@ namespace EEMMain
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://www.youtube.com/dashboard?o=U");
+            System.Diagnostics.Process.Start("https://www.youtube.com/upload");
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
