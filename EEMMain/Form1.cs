@@ -356,5 +356,10 @@ namespace EEMMain
             CBOSignColor.BackColor = Color.FromName(CBOSignColor.Text);
             mySign.ChangeSign(Color.FromName(CBOSignColor.Text),TBSignTitle.Text,TBSignExtra.Text);
         }
+
+        private void btnOpenSaveFolder_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(tbSaveGameFolder.Text);
+        }
     }
 }

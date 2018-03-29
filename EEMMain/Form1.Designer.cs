@@ -54,6 +54,8 @@
             this.TSBCopyDesc = new System.Windows.Forms.ToolStripButton();
             this.TSBCopyTitle = new System.Windows.Forms.ToolStripButton();
             this.TSBCopyFolderName = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.TSBGrabCaptures = new System.Windows.Forms.ToolStripButton();
             this.tabDoorsign = new System.Windows.Forms.TabPage();
             this.CBAutoDetect = new System.Windows.Forms.CheckBox();
             this.ButtonStreaming = new System.Windows.Forms.Button();
@@ -67,8 +69,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.TSBGrabCaptures = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnOpenSaveFolder = new System.Windows.Forms.Button();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -140,6 +141,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.btnOpenSaveFolder);
             this.splitContainer1.Panel2.Controls.Add(this.tbSaveGameFolder);
             this.splitContainer1.Panel2.Controls.Add(this.tbTags);
             this.splitContainer1.Panel2.Controls.Add(this.tbDescription);
@@ -219,7 +221,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbSaveGameFolder.Location = new System.Drawing.Point(1, 413);
             this.tbSaveGameFolder.Name = "tbSaveGameFolder";
-            this.tbSaveGameFolder.Size = new System.Drawing.Size(477, 20);
+            this.tbSaveGameFolder.Size = new System.Drawing.Size(449, 20);
             this.tbSaveGameFolder.TabIndex = 3;
             // 
             // tbTags
@@ -345,6 +347,21 @@
             this.TSBCopyFolderName.Size = new System.Drawing.Size(23, 22);
             this.TSBCopyFolderName.Text = "Copy Folder Name";
             this.TSBCopyFolderName.Click += new System.EventHandler(this.TSBCopyFolderName_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // TSBGrabCaptures
+            // 
+            this.TSBGrabCaptures.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TSBGrabCaptures.Image = ((System.Drawing.Image)(resources.GetObject("TSBGrabCaptures.Image")));
+            this.TSBGrabCaptures.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TSBGrabCaptures.Name = "TSBGrabCaptures";
+            this.TSBGrabCaptures.Size = new System.Drawing.Size(23, 22);
+            this.TSBGrabCaptures.Text = "Grab Captures";
+            this.TSBGrabCaptures.Click += new System.EventHandler(this.pullFilesToolStripMenuItem_Click);
             // 
             // tabDoorsign
             // 
@@ -492,20 +509,16 @@
             this.toolStripButton2.Text = "Panzoid";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
-            // TSBGrabCaptures
+            // btnOpenSaveFolder
             // 
-            this.TSBGrabCaptures.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.TSBGrabCaptures.Image = ((System.Drawing.Image)(resources.GetObject("TSBGrabCaptures.Image")));
-            this.TSBGrabCaptures.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.TSBGrabCaptures.Name = "TSBGrabCaptures";
-            this.TSBGrabCaptures.Size = new System.Drawing.Size(23, 22);
-            this.TSBGrabCaptures.Text = "Grab Captures";
-            this.TSBGrabCaptures.Click += new System.EventHandler(this.pullFilesToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.btnOpenSaveFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenSaveFolder.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenSaveFolder.Image")));
+            this.btnOpenSaveFolder.Location = new System.Drawing.Point(454, 413);
+            this.btnOpenSaveFolder.Name = "btnOpenSaveFolder";
+            this.btnOpenSaveFolder.Size = new System.Drawing.Size(24, 20);
+            this.btnOpenSaveFolder.TabIndex = 10;
+            this.btnOpenSaveFolder.UseVisualStyleBackColor = true;
+            this.btnOpenSaveFolder.Click += new System.EventHandler(this.btnOpenSaveFolder_Click);
             // 
             // Form1
             // 
@@ -581,6 +594,7 @@
         private System.Windows.Forms.CheckBox CBAutoDetect;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton TSBGrabCaptures;
+        private System.Windows.Forms.Button btnOpenSaveFolder;
     }
 }
 
