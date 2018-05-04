@@ -58,16 +58,22 @@ namespace EEMMain
 
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
-            mySettings.MainFormWidth = this.Width.ToString() ;
-            mySettings.MainFormHeight = this.Height.ToString();
-            mySettings.UpdateSettings();
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                mySettings.MainFormWidth = this.Width.ToString();
+                mySettings.MainFormHeight = this.Height.ToString();
+                mySettings.UpdateSettings();
+            }
         }
 
         private void Form1_LocationChanged(object sender, EventArgs e)
         {
-            mySettings.MainFormLocX = this.Location.X.ToString();
-            mySettings.MainFormLocY = this.Location.Y.ToString();
-            mySettings.UpdateSettings();
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                mySettings.MainFormLocX = this.Location.X.ToString();
+                mySettings.MainFormLocY = this.Location.Y.ToString();
+                mySettings.UpdateSettings();
+            }
         }
 
         private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
