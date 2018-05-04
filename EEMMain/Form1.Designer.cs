@@ -41,6 +41,7 @@
             this.archiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pullFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pullSaveGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnOpenSaveFolder = new System.Windows.Forms.Button();
             this.tbSaveGameFolder = new System.Windows.Forms.TextBox();
             this.tbTags = new System.Windows.Forms.TextBox();
             this.tbDescription = new System.Windows.Forms.TextBox();
@@ -57,7 +58,6 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.TSBGrabCaptures = new System.Windows.Forms.ToolStripButton();
             this.tabDoorsign = new System.Windows.Forms.TabPage();
-            this.CBAutoDetect = new System.Windows.Forms.CheckBox();
             this.ButtonStreaming = new System.Windows.Forms.Button();
             this.CBOSignColor = new System.Windows.Forms.ComboBox();
             this.TBSignExtra = new System.Windows.Forms.TextBox();
@@ -69,7 +69,11 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.btnOpenSaveFolder = new System.Windows.Forms.Button();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.TrayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmAvailable = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmRecording = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmStreaming = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -83,6 +87,7 @@
             this.toolStripEpisode.SuspendLayout();
             this.tabDoorsign.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.TrayMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripContainer1
@@ -178,7 +183,6 @@
             this.pullSaveGameToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(166, 114);
-            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // openInFolderToolStripMenuItem
             // 
@@ -215,13 +219,24 @@
             this.pullSaveGameToolStripMenuItem.Text = "Pull Save Game";
             this.pullSaveGameToolStripMenuItem.Click += new System.EventHandler(this.pullSaveGameToolStripMenuItem_Click);
             // 
+            // btnOpenSaveFolder
+            // 
+            this.btnOpenSaveFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenSaveFolder.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenSaveFolder.Image")));
+            this.btnOpenSaveFolder.Location = new System.Drawing.Point(462, 413);
+            this.btnOpenSaveFolder.Name = "btnOpenSaveFolder";
+            this.btnOpenSaveFolder.Size = new System.Drawing.Size(24, 20);
+            this.btnOpenSaveFolder.TabIndex = 10;
+            this.btnOpenSaveFolder.UseVisualStyleBackColor = true;
+            this.btnOpenSaveFolder.Click += new System.EventHandler(this.btnOpenSaveFolder_Click);
+            // 
             // tbSaveGameFolder
             // 
             this.tbSaveGameFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbSaveGameFolder.Location = new System.Drawing.Point(1, 413);
             this.tbSaveGameFolder.Name = "tbSaveGameFolder";
-            this.tbSaveGameFolder.Size = new System.Drawing.Size(449, 20);
+            this.tbSaveGameFolder.Size = new System.Drawing.Size(457, 20);
             this.tbSaveGameFolder.TabIndex = 3;
             // 
             // tbTags
@@ -231,7 +246,7 @@
             this.tbTags.Location = new System.Drawing.Point(1, 342);
             this.tbTags.Multiline = true;
             this.tbTags.Name = "tbTags";
-            this.tbTags.Size = new System.Drawing.Size(477, 65);
+            this.tbTags.Size = new System.Drawing.Size(485, 65);
             this.tbTags.TabIndex = 2;
             // 
             // tbDescription
@@ -242,7 +257,7 @@
             this.tbDescription.Location = new System.Drawing.Point(1, 64);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(477, 269);
+            this.tbDescription.Size = new System.Drawing.Size(485, 269);
             this.tbDescription.TabIndex = 1;
             // 
             // tbTitle
@@ -252,7 +267,7 @@
             this.tbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbTitle.Location = new System.Drawing.Point(1, 26);
             this.tbTitle.Name = "tbTitle";
-            this.tbTitle.Size = new System.Drawing.Size(477, 32);
+            this.tbTitle.Size = new System.Drawing.Size(485, 32);
             this.tbTitle.TabIndex = 0;
             // 
             // toolStripEpisode
@@ -365,7 +380,6 @@
             // 
             // tabDoorsign
             // 
-            this.tabDoorsign.Controls.Add(this.CBAutoDetect);
             this.tabDoorsign.Controls.Add(this.ButtonStreaming);
             this.tabDoorsign.Controls.Add(this.CBOSignColor);
             this.tabDoorsign.Controls.Add(this.TBSignExtra);
@@ -379,16 +393,6 @@
             this.tabDoorsign.TabIndex = 2;
             this.tabDoorsign.Text = "Door Sign";
             this.tabDoorsign.UseVisualStyleBackColor = true;
-            // 
-            // CBAutoDetect
-            // 
-            this.CBAutoDetect.AutoSize = true;
-            this.CBAutoDetect.Location = new System.Drawing.Point(497, 39);
-            this.CBAutoDetect.Name = "CBAutoDetect";
-            this.CBAutoDetect.Size = new System.Drawing.Size(80, 17);
-            this.CBAutoDetect.TabIndex = 4;
-            this.CBAutoDetect.Text = "AutoDetect";
-            this.CBAutoDetect.UseVisualStyleBackColor = true;
             // 
             // ButtonStreaming
             // 
@@ -505,20 +509,48 @@
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(69, 22);
-            this.toolStripButton2.Text = "Panzoid";
+            this.toolStripButton2.Size = new System.Drawing.Size(49, 22);
+            this.toolStripButton2.Text = "OBS";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
-            // btnOpenSaveFolder
+            // notifyIcon
             // 
-            this.btnOpenSaveFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenSaveFolder.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenSaveFolder.Image")));
-            this.btnOpenSaveFolder.Location = new System.Drawing.Point(454, 413);
-            this.btnOpenSaveFolder.Name = "btnOpenSaveFolder";
-            this.btnOpenSaveFolder.Size = new System.Drawing.Size(24, 20);
-            this.btnOpenSaveFolder.TabIndex = 10;
-            this.btnOpenSaveFolder.UseVisualStyleBackColor = true;
-            this.btnOpenSaveFolder.Click += new System.EventHandler(this.btnOpenSaveFolder_Click);
+            this.notifyIcon.ContextMenuStrip = this.TrayMenu;
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "Epiktetus Episode Manager";
+            this.notifyIcon.Visible = true;
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
+            this.notifyIcon.MouseUp += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseUp);
+            // 
+            // TrayMenu
+            // 
+            this.TrayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmAvailable,
+            this.tsmRecording,
+            this.tsmStreaming});
+            this.TrayMenu.Name = "TrayMenu";
+            this.TrayMenu.Size = new System.Drawing.Size(129, 70);
+            // 
+            // tsmAvailable
+            // 
+            this.tsmAvailable.Name = "tsmAvailable";
+            this.tsmAvailable.Size = new System.Drawing.Size(128, 22);
+            this.tsmAvailable.Text = "Available";
+            this.tsmAvailable.Click += new System.EventHandler(this.ButtonAvailable_Click);
+            // 
+            // tsmRecording
+            // 
+            this.tsmRecording.Name = "tsmRecording";
+            this.tsmRecording.Size = new System.Drawing.Size(128, 22);
+            this.tsmRecording.Text = "Recording";
+            this.tsmRecording.Click += new System.EventHandler(this.ButtonRecording_Click);
+            // 
+            // tsmStreaming
+            // 
+            this.tsmStreaming.Name = "tsmStreaming";
+            this.tsmStreaming.Size = new System.Drawing.Size(128, 22);
+            this.tsmStreaming.Text = "Streaming";
+            this.tsmStreaming.Click += new System.EventHandler(this.ButtonStreaming_Click);
             // 
             // Form1
             // 
@@ -526,8 +558,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 495);
             this.Controls.Add(this.toolStripContainer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(450, 350);
             this.Name = "Form1";
+            this.ShowInTaskbar = false;
             this.Text = "Epiktetus Episode Manager";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
@@ -549,6 +583,7 @@
             this.tabDoorsign.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.TrayMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -591,10 +626,14 @@
         private System.Windows.Forms.ComboBox CBOSignColor;
         private System.Windows.Forms.TextBox TBSignExtra;
         private System.Windows.Forms.Button ButtonStreaming;
-        private System.Windows.Forms.CheckBox CBAutoDetect;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton TSBGrabCaptures;
         private System.Windows.Forms.Button btnOpenSaveFolder;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.ContextMenuStrip TrayMenu;
+        private System.Windows.Forms.ToolStripMenuItem tsmAvailable;
+        private System.Windows.Forms.ToolStripMenuItem tsmRecording;
+        private System.Windows.Forms.ToolStripMenuItem tsmStreaming;
     }
 }
 

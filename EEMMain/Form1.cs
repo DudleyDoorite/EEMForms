@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-
+using System.Diagnostics;
 
 namespace EEMMain
 {
@@ -49,11 +49,17 @@ namespace EEMMain
             treeView1.AfterSelect += TreeView1_AfterSelect;
             this.LocationChanged += Form1_LocationChanged;
             this.SizeChanged += Form1_SizeChanged;
+            this.FormClosed += Form1_FormClosed;
 
 
             //Load first episode
             TreeNode FirstNode = treeView1.Nodes[0];
             treeView1.SelectedNode = FirstNode;
+        }
+
+        private void Form1_FormClosed(object sender, EventArgs e)
+        {
+            notifyIcon.Dispose();
         }
 
         private void Form1_SizeChanged(object sender, EventArgs e)
@@ -63,6 +69,11 @@ namespace EEMMain
                 mySettings.MainFormWidth = this.Width.ToString();
                 mySettings.MainFormHeight = this.Height.ToString();
                 mySettings.UpdateSettings();
+            }
+            else if (this.WindowState == FormWindowState.Minimized)
+            {
+                mySign.Location = new Point(1920, 0);
+                mySign.Visible = true;
             }
         }
 
@@ -271,20 +282,12 @@ namespace EEMMain
             Clipboard.SetText(this.tbTags.Text);
         }
 
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-
-        }
-
         private void ButtonAvailable_Click(object sender, EventArgs e)
         {
             mySign.Hide();
             mySign.Location = new Point(1920,0);
             mySign.Show(this);
-            TBSignTitle.Text = "Available";
-            TBSignExtra.Text = "Come on in, I'm not busy.";
-            CBOSignColor.Text = "Lime";
-            mySign.ChangeSign(Color.FromName(CBOSignColor.Text), TBSignTitle.Text, TBSignExtra.Text);
+            mySign.SetAvailable();
         }
 
         private void ButtonRecording_Click(object sender, EventArgs e)
@@ -292,10 +295,7 @@ namespace EEMMain
             mySign.Hide();
             mySign.Location = new Point(1920, 0);
             mySign.Show(this);
-            TBSignTitle.Text = "Recording";
-            TBSignExtra.Text = "Don't knock, just quietly open the door and wait for me to get to a good stopping point.";
-            CBOSignColor.Text = "Yellow";
-            mySign.ChangeSign(Color.FromName(CBOSignColor.Text), TBSignTitle.Text, TBSignExtra.Text);
+            mySign.SetRecording();
         }
 
         private void ButtonStreaming_Click(object sender, EventArgs e)
@@ -303,10 +303,7 @@ namespace EEMMain
             mySign.Hide();
             mySign.Location = new Point(1920, 0);
             mySign.Show(this);
-            TBSignTitle.Text = "Streaming";
-            TBSignExtra.Text = "Only enter if it's an emergency. It would be better to text me.";
-            CBOSignColor.Text = "Red";
-            mySign.ChangeSign(Color.FromName(CBOSignColor.Text), TBSignTitle.Text, TBSignExtra.Text);
+            mySign.SetStreaming();
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -316,7 +313,21 @@ namespace EEMMain
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://panzoid.com/tools/backgrounder");
+            Process OBS = new Process();
+            OBS.Exited += OBS_Exited;
+            OBS.StartInfo.FileName = "obs64.exe";
+            OBS.StartInfo.WorkingDirectory = "C:\\Program Files (x86)\\obs-studio\\bin\\64bit\\";
+            OBS.EnableRaisingEvents = true;
+            OBS.Start();
+
+            mySign.SetRecording();
+        }
+
+
+        private void OBS_Exited(object sender, EventArgs e)
+        {
+            //crashes with something about threads that I don't understand
+            //mySign.SetAvailable();
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
@@ -366,6 +377,24 @@ namespace EEMMain
         private void btnOpenSaveFolder_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(tbSaveGameFolder.Text);
+        }
+
+        private void notifyIcon_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                TrayMenu.Show();
+            }
+        }
+
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal) 
+            {
+                this.WindowState = FormWindowState.Minimized;
+            }else{
+                this.WindowState = FormWindowState.Normal;
+            }
         }
     }
 }
