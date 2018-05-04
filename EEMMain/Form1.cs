@@ -389,11 +389,12 @@ namespace EEMMain
 
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (this.WindowState == FormWindowState.Normal) 
+            if (this.Visible) 
             {
-                this.WindowState = FormWindowState.Minimized;
+                this.Hide();
             }else{
-                this.WindowState = FormWindowState.Normal;
+                this.Show();
+                this.Activate();
             }
         }
     }
