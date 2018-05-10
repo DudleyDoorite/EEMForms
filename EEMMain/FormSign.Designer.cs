@@ -70,7 +70,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FormSign";
             this.TopMost = true;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }

@@ -74,6 +74,8 @@
             this.tsmAvailable = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmRecording = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmStreaming = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmExit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -223,7 +225,7 @@
             // 
             this.btnOpenSaveFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOpenSaveFolder.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenSaveFolder.Image")));
-            this.btnOpenSaveFolder.Location = new System.Drawing.Point(462, 413);
+            this.btnOpenSaveFolder.Location = new System.Drawing.Point(466, 413);
             this.btnOpenSaveFolder.Name = "btnOpenSaveFolder";
             this.btnOpenSaveFolder.Size = new System.Drawing.Size(24, 20);
             this.btnOpenSaveFolder.TabIndex = 10;
@@ -236,7 +238,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbSaveGameFolder.Location = new System.Drawing.Point(1, 413);
             this.tbSaveGameFolder.Name = "tbSaveGameFolder";
-            this.tbSaveGameFolder.Size = new System.Drawing.Size(457, 20);
+            this.tbSaveGameFolder.Size = new System.Drawing.Size(461, 20);
             this.tbSaveGameFolder.TabIndex = 3;
             // 
             // tbTags
@@ -246,7 +248,7 @@
             this.tbTags.Location = new System.Drawing.Point(1, 342);
             this.tbTags.Multiline = true;
             this.tbTags.Name = "tbTags";
-            this.tbTags.Size = new System.Drawing.Size(485, 65);
+            this.tbTags.Size = new System.Drawing.Size(489, 65);
             this.tbTags.TabIndex = 2;
             // 
             // tbDescription
@@ -257,7 +259,7 @@
             this.tbDescription.Location = new System.Drawing.Point(1, 64);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(485, 269);
+            this.tbDescription.Size = new System.Drawing.Size(489, 269);
             this.tbDescription.TabIndex = 1;
             // 
             // tbTitle
@@ -267,7 +269,7 @@
             this.tbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbTitle.Location = new System.Drawing.Point(1, 26);
             this.tbTitle.Name = "tbTitle";
-            this.tbTitle.Size = new System.Drawing.Size(485, 32);
+            this.tbTitle.Size = new System.Drawing.Size(489, 32);
             this.tbTitle.TabIndex = 0;
             // 
             // toolStripEpisode
@@ -519,6 +521,7 @@
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "Epiktetus Episode Manager";
             this.notifyIcon.Visible = true;
+            this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseClick);
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
             this.notifyIcon.MouseUp += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseUp);
             // 
@@ -527,9 +530,11 @@
             this.TrayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmAvailable,
             this.tsmRecording,
-            this.tsmStreaming});
+            this.tsmStreaming,
+            this.toolStripSeparator4,
+            this.tsmExit});
             this.TrayMenu.Name = "TrayMenu";
-            this.TrayMenu.Size = new System.Drawing.Size(129, 70);
+            this.TrayMenu.Size = new System.Drawing.Size(129, 98);
             // 
             // tsmAvailable
             // 
@@ -551,6 +556,18 @@
             this.tsmStreaming.Size = new System.Drawing.Size(128, 22);
             this.tsmStreaming.Text = "Streaming";
             this.tsmStreaming.Click += new System.EventHandler(this.ButtonStreaming_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(125, 6);
+            // 
+            // tsmExit
+            // 
+            this.tsmExit.Name = "tsmExit";
+            this.tsmExit.Size = new System.Drawing.Size(128, 22);
+            this.tsmExit.Text = "Exit";
+            this.tsmExit.Click += new System.EventHandler(this.tsmExit_Click);
             // 
             // Form1
             // 
@@ -634,6 +651,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmAvailable;
         private System.Windows.Forms.ToolStripMenuItem tsmRecording;
         private System.Windows.Forms.ToolStripMenuItem tsmStreaming;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem tsmExit;
     }
 }
 

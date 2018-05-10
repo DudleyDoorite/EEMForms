@@ -288,6 +288,7 @@ namespace EEMMain
             mySign.Location = new Point(1920,0);
             mySign.Show(this);
             mySign.SetAvailable();
+            notifyIcon.Text = "Available";
         }
 
         private void ButtonRecording_Click(object sender, EventArgs e)
@@ -296,6 +297,7 @@ namespace EEMMain
             mySign.Location = new Point(1920, 0);
             mySign.Show(this);
             mySign.SetRecording();
+            notifyIcon.Text = "Recording";
         }
 
         private void ButtonStreaming_Click(object sender, EventArgs e)
@@ -304,6 +306,7 @@ namespace EEMMain
             mySign.Location = new Point(1920, 0);
             mySign.Show(this);
             mySign.SetStreaming();
+            notifyIcon.Text = "Streaming";
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -394,8 +397,17 @@ namespace EEMMain
                 this.Hide();
             }else{
                 this.Show();
-                this.Activate();
             }
+        }
+
+        private void tsmExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.Activate();
         }
     }
 }
