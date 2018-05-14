@@ -257,6 +257,15 @@ namespace EEMMain
                     //Copy source Episode file to new folder.
                     File.Copy(curEpisode.Path, strDestinationDescriptionFile);
                 }
+                //Grab the thumbnail too if it exists
+                string ThumbFile = "thumbnail.svg";
+                string OldFile = string.Format("{0}\\{1}\\{2}", mySettings.BaseFolder, curEpisode.FolderName, ThumbFile);
+                string strDestinationThumbnailFile = string.Format("{0}\\{1}", tmpNewFolderPath, ThumbFile);
+                if (File.Exists(OldFile))
+                {
+                    //Copy source Episode file to new folder.
+                    File.Copy(OldFile, strDestinationThumbnailFile);
+                }
             }
 
             ScanBaseFolder();
