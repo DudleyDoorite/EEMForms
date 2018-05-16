@@ -106,6 +106,18 @@ namespace EEMMain
             }
         }
 
+        private string _LastEpisode;
+        public string LastEpisode
+        {
+            get { return _LastEpisode; }
+            set
+            {
+                _LastEpisode = value;
+                this.IsDirty = true;
+                OnSettingsChangedEvent(new SettingsEventArg("LastEpisode"));
+            }
+        }
+
 
         public bool IsDirty { get; set; }
 
@@ -125,6 +137,7 @@ namespace EEMMain
             this._MainFormLocY = ReadSetting("MainFormLocY");
             this._MainFormWidth = ReadSetting("MainFormWidth");
             this._MainFormHeight = ReadSetting("MainFormHeight");
+            this._LastEpisode = ReadSetting("LastEpisode");
 
 
             this.IsDirty = false;
@@ -177,6 +190,7 @@ namespace EEMMain
             AddUpdateSettings("MainFormLocY", this._MainFormLocY);
             AddUpdateSettings("MainFormWidth", this._MainFormWidth);
             AddUpdateSettings("MainFormHeight", this._MainFormHeight);
+            AddUpdateSettings("LastEpisode", this._LastEpisode);
             this.IsDirty = false;
         }
 

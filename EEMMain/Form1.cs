@@ -17,10 +17,14 @@ namespace EEMMain
         EEMSettings mySettings = new EEMSettings();
         Episode curEpisode = new Episode();
         FormSign mySign = new FormSign();
-
+        BackgroundWorker backgroundWorker1;
+        
         public Form1()
         {
             InitializeComponent();
+            backgroundWorker1 = new BackgroundWorker();
+            backgroundWorker1.DoWork += backgroundWorker1_DoWork;
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -53,8 +57,20 @@ namespace EEMMain
 
 
             //Load first episode
-            TreeNode FirstNode = treeView1.Nodes[0];
-            treeView1.SelectedNode = FirstNode;
+            //TreeNode FirstNode = treeView1;
+            //treeView1.SelectedNode = FirstNode;
+            foreach (TreeNode node in treeView1.Nodes)
+            {
+                if (node.Text == mySettings.LastEpisode)
+                {
+                    //treeView1.Select();
+                    treeView1.SelectedNode = node;
+                    //treeView1.Focus();
+                    break;
+                }
+            }
+
+            
         }
 
         private void Form1_FormClosed(object sender, EventArgs e)
@@ -89,6 +105,13 @@ namespace EEMMain
 
         private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
+
+            if (!File.Exists(curEpisode.Path))
+            {
+                ScanBaseFolder();
+            }
+            else
+            {
             if (!string.IsNullOrEmpty(curEpisode.Path))
             {
                 curEpisode.Title = tbTitle.Text;
@@ -99,24 +122,31 @@ namespace EEMMain
 
                 curEpisode.Save(curEpisode.Path);
             }
-
+            }
 
             //Open the episode.xml file
             string xmlFile = string.Format("{0}\\{1}\\{2}", mySettings.BaseFolder, e.Node.Text, mySettings.DescriptionFile);
-            //Into our current episode object 
-            curEpisode.Load(xmlFile);
+
+            if (!File.Exists(xmlFile))
+            {
+                ScanBaseFolder();
+            }
+            else
+            {
+                //Into our current episode object 
+                curEpisode.Load(xmlFile);
 
 
-            //and update the episode screen
-            curEpisode.Path = xmlFile;
-            curEpisode.FolderName = e.Node.Text;
+                //and update the episode screen
+                curEpisode.Path = xmlFile;
+                curEpisode.FolderName = e.Node.Text;
 
-
-            this.tbTitle.Text = curEpisode.Title;
-            this.tbDescription.Text = curEpisode.Description;
-            this.tbTags.Text = curEpisode.Tags;
-            this.tbSaveGameFolder.Text = curEpisode.SaveGameFolder;
-            this.TSLFolderName.Text = curEpisode.FolderName;
+                this.tbTitle.Text = curEpisode.Title;
+                this.tbDescription.Text = curEpisode.Description;
+                this.tbTags.Text = curEpisode.Tags;
+                this.tbSaveGameFolder.Text = curEpisode.SaveGameFolder;
+                this.TSLFolderName.Text = curEpisode.FolderName;
+            }
         }
 
         private void LoadSettingValues()
@@ -166,6 +196,12 @@ namespace EEMMain
                     if (File.Exists(checkfile))
                     {
                         treeView1.Nodes.Add(dir.Name);
+                        //TreeNode node = treeView1.Nodes.Add(dir.Name);
+                        //if (dir.Name == mySettings.LastEpisode)
+                        //{
+                        ////    //treeView1.SelectedNode = treeView1.Nodes[treeView1.Nodes.Count-1];
+                        //node.TreeView.SelectedNode = node.NextNode;
+                        //}
                     }
                 }
             }
@@ -173,24 +209,26 @@ namespace EEMMain
             {
                 MessageBox.Show("Base Folder not Found: " + mySettings.BaseFolder, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void openInFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string folder = string.Format("{0}\\{1}", mySettings.BaseFolder, curEpisode.FolderName);
             Util.OpenFolder(folder);
+            
         }
 
         private void archiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //lowest priority feature
             //move entire episode folder to a selected folder (default is Z:\EpikTek\seriesname\seasonname but this isn't predictable enough to do programatically)
-            ScanBaseFolder();
+            //ScanBaseFolder();
         }
 
-        private void pullFilesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            //look in captures folder for *.mkv files
+           //look in captures folder for *.mkv files
             string[] fileEntries = Directory.GetFiles(mySettings.CapturesFolder);
             string ext;
             //for each one execute this command:
@@ -213,8 +251,12 @@ namespace EEMMain
                         break;
                 }
             }
+           
+        }
 
-
+        private void pullFilesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            backgroundWorker1.RunWorkerAsync();
         }
 
         private void pullSaveGameToolStripMenuItem_Click(object sender, EventArgs e)
@@ -423,12 +465,20 @@ namespace EEMMain
 
         private void tsmExit_Click(object sender, EventArgs e)
         {
+            mySettings.LastEpisode = curEpisode.Title;
+            mySettings.UpdateSettings();
             Application.Exit();
         }
 
         private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
             this.Activate();
+        }
+
+        private void treeView1_MouseUp(object sender, MouseEventArgs e)
+        {
+            ////mySettings.LastEpisode = treeView1.GetNodeAt(e.Location).Text;
+            ////mySettings.UpdateSettings(); 
         }
     }
 }

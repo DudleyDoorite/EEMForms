@@ -174,6 +174,7 @@
             this.treeView1.Size = new System.Drawing.Size(123, 433);
             this.treeView1.TabIndex = 0;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
+            this.treeView1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseUp);
             // 
             // contextMenuStrip1
             // 
@@ -225,7 +226,7 @@
             // 
             this.btnOpenSaveFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOpenSaveFolder.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenSaveFolder.Image")));
-            this.btnOpenSaveFolder.Location = new System.Drawing.Point(466, 413);
+            this.btnOpenSaveFolder.Location = new System.Drawing.Point(468, 413);
             this.btnOpenSaveFolder.Name = "btnOpenSaveFolder";
             this.btnOpenSaveFolder.Size = new System.Drawing.Size(24, 20);
             this.btnOpenSaveFolder.TabIndex = 10;
@@ -238,7 +239,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbSaveGameFolder.Location = new System.Drawing.Point(1, 413);
             this.tbSaveGameFolder.Name = "tbSaveGameFolder";
-            this.tbSaveGameFolder.Size = new System.Drawing.Size(461, 20);
+            this.tbSaveGameFolder.Size = new System.Drawing.Size(463, 20);
             this.tbSaveGameFolder.TabIndex = 3;
             // 
             // tbTags
@@ -248,7 +249,7 @@
             this.tbTags.Location = new System.Drawing.Point(1, 342);
             this.tbTags.Multiline = true;
             this.tbTags.Name = "tbTags";
-            this.tbTags.Size = new System.Drawing.Size(489, 65);
+            this.tbTags.Size = new System.Drawing.Size(491, 65);
             this.tbTags.TabIndex = 2;
             // 
             // tbDescription
@@ -259,7 +260,7 @@
             this.tbDescription.Location = new System.Drawing.Point(1, 64);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(489, 269);
+            this.tbDescription.Size = new System.Drawing.Size(491, 269);
             this.tbDescription.TabIndex = 1;
             // 
             // tbTitle
@@ -269,7 +270,7 @@
             this.tbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbTitle.Location = new System.Drawing.Point(1, 26);
             this.tbTitle.Name = "tbTitle";
-            this.tbTitle.Size = new System.Drawing.Size(489, 32);
+            this.tbTitle.Size = new System.Drawing.Size(491, 32);
             this.tbTitle.TabIndex = 0;
             // 
             // toolStripEpisode
