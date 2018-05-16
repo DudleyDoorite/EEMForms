@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace EEMMain
 {
@@ -40,5 +42,43 @@ namespace EEMMain
 
             return ret;
         }
+
+
+        public static DialogResult DisplayWarningMessage(string msg)
+        {
+            string caption = "Warning Message";
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+
+            // Displays the MessageBox and return the results.
+            return DisplayMessageWindow(msg, caption, buttons);
+        }
+
+        public static DialogResult DisplayErrorMessage(string msg)
+        {
+            string caption = "Error Message";
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+
+            // Displays the MessageBox and return the results.
+            return DisplayMessageWindow(msg, caption, buttons);
+        }
+
+        private static DialogResult DisplayMessageWindow(string message, string caption, MessageBoxButtons buttons)
+        {
+            return MessageBox.Show(message, caption, buttons);
+        }
+
+        public static void OpenFolder(string folder)
+        {
+            if (Directory.Exists(folder))
+            {
+                System.Diagnostics.Process.Start(folder);
+            }
+            else
+            {
+                Util.DisplayErrorMessage(string.Format("Folder Not Found.\n {0}", folder));
+
+            }
+        }
+
     }
 }

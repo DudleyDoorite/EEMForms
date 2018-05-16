@@ -95,8 +95,8 @@ namespace EEMMain
                 curEpisode.Description = tbDescription.Text;
                 curEpisode.Tags = tbTags.Text;
                 curEpisode.SaveGameFolder = tbSaveGameFolder.Text;
-                curEpisode.FolderName = TSLFolderName.Text;            
-                
+                curEpisode.FolderName = TSLFolderName.Text;
+
                 curEpisode.Save(curEpisode.Path);
             }
 
@@ -157,7 +157,7 @@ namespace EEMMain
             DirectoryInfo di = new DirectoryInfo(mySettings.BaseFolder);
             if (di.Exists)
             {
-                
+
                 IEnumerable<DirectoryInfo> dirList = di.EnumerateDirectories();
                 treeView1.Nodes.Clear();
                 foreach (DirectoryInfo dir in dirList)
@@ -177,7 +177,8 @@ namespace EEMMain
 
         private void openInFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(string.Format("{0}\\{1}", mySettings.BaseFolder,curEpisode.FolderName));
+            string folder = string.Format("{0}\\{1}", mySettings.BaseFolder, curEpisode.FolderName);
+            Util.OpenFolder(folder);
         }
 
         private void archiveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -195,7 +196,7 @@ namespace EEMMain
             //for each one execute this command:
             foreach (string fileName in fileEntries)
             {
-                ext=Path.GetExtension(fileName);
+                ext = Path.GetExtension(fileName);
                 switch (ext)
                 {
                     case ".mkv":
@@ -208,11 +209,11 @@ namespace EEMMain
                         //skip shortcuts and batch files
                         break;
                     default:
-                    File.Move(fileName, mySettings.BaseFolder +"\\"+ curEpisode.FolderName+"\\"+ Path.GetFileName(fileName));
+                        File.Move(fileName, mySettings.BaseFolder + "\\" + curEpisode.FolderName + "\\" + Path.GetFileName(fileName));
                         break;
                 }
             }
-            
+
 
         }
 
@@ -233,7 +234,7 @@ namespace EEMMain
 
             if (string.IsNullOrEmpty(curEpisode.Path))
             {
-                return; 
+                return;
             }
 
             if (CustomInput.InputBox("Clone A Folder", "Enter the Name you want for the new folder", ref newFolderName) == DialogResult.OK)
@@ -294,7 +295,7 @@ namespace EEMMain
         private void ButtonAvailable_Click(object sender, EventArgs e)
         {
             mySign.Hide();
-            mySign.Location = new Point(1920,0);
+            mySign.Location = new Point(1920, 0);
             mySign.Show(this);
             mySign.SetAvailable();
             notifyIcon.Text = "Available";
@@ -338,13 +339,20 @@ namespace EEMMain
 
         private void OBS_Exited(object sender, EventArgs e)
         {
-            //crashes with something about threads that I don't understand
-            //mySign.SetAvailable();
+            //Process exits correctly, the process object is shutdown at this point so the threads are being released.
+            //Checking the Exit code should let you know if you have any issues.
+            Process S = ((Process)sender);
+            if (S.ExitCode != 0)
+            {
+                Util.DisplayErrorMessage(string.Format("OBS Exited with error code {0}", S.ExitCode));
+            }
+            mySign.SetAvailable();
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("e:\\videos\\");
+            //System.Diagnostics.Process.Start("e:\\videos\\");
+            Util.OpenFolder("e:\\videos\\");
         }
 
         private void TSBSave_Click(object sender, EventArgs e)
@@ -369,7 +377,8 @@ namespace EEMMain
 
         private void TSLFolderName_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(Path.GetDirectoryName(curEpisode.Path));
+            //System.Diagnostics.Process.Start(Path.GetDirectoryName(curEpisode.Path));
+            Util.OpenFolder(Path.GetDirectoryName(curEpisode.Path));
         }
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -383,12 +392,13 @@ namespace EEMMain
         private void CBOSignColor_SelectedIndexChanged(object sender, EventArgs e)
         {
             CBOSignColor.BackColor = Color.FromName(CBOSignColor.Text);
-            mySign.ChangeSign(Color.FromName(CBOSignColor.Text),TBSignTitle.Text,TBSignExtra.Text);
+            mySign.ChangeSign(Color.FromName(CBOSignColor.Text), TBSignTitle.Text, TBSignExtra.Text);
         }
 
         private void btnOpenSaveFolder_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(tbSaveGameFolder.Text);
+            //System.Diagnostics.Process.Start(tbSaveGameFolder.Text);
+            Util.OpenFolder(tbSaveGameFolder.Text);
         }
 
         private void notifyIcon_MouseUp(object sender, MouseEventArgs e)
@@ -401,10 +411,12 @@ namespace EEMMain
 
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (this.Visible) 
+            if (this.Visible)
             {
                 this.Hide();
-            }else{
+            }
+            else
+            {
                 this.Show();
             }
         }
