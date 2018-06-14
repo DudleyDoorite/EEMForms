@@ -336,29 +336,39 @@ namespace EEMMain
 
         private void ButtonAvailable_Click(object sender, EventArgs e)
         {
-            mySign.Hide();
-            mySign.Location = new Point(1920, 0);
-            mySign.Show(this);
             mySign.SetAvailable();
             notifyIcon.Text = "Available";
+            notifyIcon.Icon = Properties.Resources.IconGreen;
+            CBOSignColor.Text = "Lime";
+            TBSignTitle.Text = notifyIcon.Text;
+            TBSignExtra.Text = "Come on in, I'm not busy.";
         }
 
         private void ButtonRecording_Click(object sender, EventArgs e)
         {
-            mySign.Hide();
-            mySign.Location = new Point(1920, 0);
-            mySign.Show(this);
             mySign.SetRecording();
             notifyIcon.Text = "Recording";
+            notifyIcon.Icon = Properties.Resources.IconYellow;
+            CBOSignColor.Text = "Yellow";
+            TBSignTitle.Text = notifyIcon.Text;
+            TBSignExtra.Text = "Don't knock, just quietly open the door and wait for me to get to a good stopping point.";
         }
 
         private void ButtonStreaming_Click(object sender, EventArgs e)
         {
-            mySign.Hide();
-            mySign.Location = new Point(1920, 0);
-            mySign.Show(this);
             mySign.SetStreaming();
             notifyIcon.Text = "Streaming";
+            notifyIcon.Icon = Properties.Resources.IconRed;
+            CBOSignColor.Text = "Red";
+            TBSignTitle.Text = notifyIcon.Text;
+            TBSignExtra.Text = "Only enter if it's an emergency. It would be better to text me.";
+        }
+
+        private void ButtonCustom_Click(object sender, EventArgs e)
+        {
+            mySign.ChangeSign(Color.FromName(CBOSignColor.Text), TBSignTitle.Text, TBSignExtra.Text);
+            notifyIcon.Text = TBSignTitle.Text;
+            notifyIcon.Icon = Properties.Resources.IconWhite;
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -434,7 +444,6 @@ namespace EEMMain
         private void CBOSignColor_SelectedIndexChanged(object sender, EventArgs e)
         {
             CBOSignColor.BackColor = Color.FromName(CBOSignColor.Text);
-            mySign.ChangeSign(Color.FromName(CBOSignColor.Text), TBSignTitle.Text, TBSignExtra.Text);
         }
 
         private void btnOpenSaveFolder_Click(object sender, EventArgs e)

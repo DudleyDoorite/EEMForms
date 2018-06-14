@@ -58,6 +58,7 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.TSBGrabCaptures = new System.Windows.Forms.ToolStripButton();
             this.tabDoorsign = new System.Windows.Forms.TabPage();
+            this.ButtonCustom = new System.Windows.Forms.Button();
             this.ButtonStreaming = new System.Windows.Forms.Button();
             this.CBOSignColor = new System.Windows.Forms.ComboBox();
             this.TBSignExtra = new System.Windows.Forms.TextBox();
@@ -98,11 +99,11 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tabControl1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(623, 470);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(648, 470);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(623, 495);
+            this.toolStripContainer1.Size = new System.Drawing.Size(648, 495);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -118,7 +119,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(623, 470);
+            this.tabControl1.Size = new System.Drawing.Size(648, 470);
             this.tabControl1.TabIndex = 0;
             // 
             // tabEpisodes
@@ -127,7 +128,7 @@
             this.tabEpisodes.Location = new System.Drawing.Point(4, 22);
             this.tabEpisodes.Name = "tabEpisodes";
             this.tabEpisodes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEpisodes.Size = new System.Drawing.Size(615, 444);
+            this.tabEpisodes.Size = new System.Drawing.Size(640, 444);
             this.tabEpisodes.TabIndex = 1;
             this.tabEpisodes.Text = "Episodes";
             this.tabEpisodes.UseVisualStyleBackColor = true;
@@ -154,7 +155,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.tbDescription);
             this.splitContainer1.Panel2.Controls.Add(this.tbTitle);
             this.splitContainer1.Panel2.Controls.Add(this.toolStripEpisode);
-            this.splitContainer1.Size = new System.Drawing.Size(609, 438);
+            this.splitContainer1.Size = new System.Drawing.Size(634, 438);
             this.splitContainer1.SplitterDistance = 126;
             this.splitContainer1.SplitterIncrement = 10;
             this.splitContainer1.SplitterWidth = 2;
@@ -226,7 +227,7 @@
             // 
             this.btnOpenSaveFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOpenSaveFolder.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenSaveFolder.Image")));
-            this.btnOpenSaveFolder.Location = new System.Drawing.Point(468, 413);
+            this.btnOpenSaveFolder.Location = new System.Drawing.Point(479, 413);
             this.btnOpenSaveFolder.Name = "btnOpenSaveFolder";
             this.btnOpenSaveFolder.Size = new System.Drawing.Size(24, 20);
             this.btnOpenSaveFolder.TabIndex = 10;
@@ -239,7 +240,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbSaveGameFolder.Location = new System.Drawing.Point(1, 413);
             this.tbSaveGameFolder.Name = "tbSaveGameFolder";
-            this.tbSaveGameFolder.Size = new System.Drawing.Size(463, 20);
+            this.tbSaveGameFolder.Size = new System.Drawing.Size(476, 20);
             this.tbSaveGameFolder.TabIndex = 3;
             // 
             // tbTags
@@ -249,7 +250,7 @@
             this.tbTags.Location = new System.Drawing.Point(1, 342);
             this.tbTags.Multiline = true;
             this.tbTags.Name = "tbTags";
-            this.tbTags.Size = new System.Drawing.Size(491, 65);
+            this.tbTags.Size = new System.Drawing.Size(505, 65);
             this.tbTags.TabIndex = 2;
             // 
             // tbDescription
@@ -260,7 +261,7 @@
             this.tbDescription.Location = new System.Drawing.Point(1, 64);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(491, 269);
+            this.tbDescription.Size = new System.Drawing.Size(505, 269);
             this.tbDescription.TabIndex = 1;
             // 
             // tbTitle
@@ -270,7 +271,7 @@
             this.tbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbTitle.Location = new System.Drawing.Point(1, 26);
             this.tbTitle.Name = "tbTitle";
-            this.tbTitle.Size = new System.Drawing.Size(491, 32);
+            this.tbTitle.Size = new System.Drawing.Size(505, 32);
             this.tbTitle.TabIndex = 0;
             // 
             // toolStripEpisode
@@ -290,7 +291,7 @@
             this.TSBGrabCaptures});
             this.toolStripEpisode.Location = new System.Drawing.Point(0, 0);
             this.toolStripEpisode.Name = "toolStripEpisode";
-            this.toolStripEpisode.Size = new System.Drawing.Size(481, 25);
+            this.toolStripEpisode.Size = new System.Drawing.Size(506, 25);
             this.toolStripEpisode.TabIndex = 9;
             this.toolStripEpisode.Text = "toolStrip2";
             // 
@@ -383,6 +384,7 @@
             // 
             // tabDoorsign
             // 
+            this.tabDoorsign.Controls.Add(this.ButtonCustom);
             this.tabDoorsign.Controls.Add(this.ButtonStreaming);
             this.tabDoorsign.Controls.Add(this.CBOSignColor);
             this.tabDoorsign.Controls.Add(this.TBSignExtra);
@@ -392,10 +394,22 @@
             this.tabDoorsign.Location = new System.Drawing.Point(4, 22);
             this.tabDoorsign.Name = "tabDoorsign";
             this.tabDoorsign.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDoorsign.Size = new System.Drawing.Size(615, 444);
+            this.tabDoorsign.Size = new System.Drawing.Size(640, 444);
             this.tabDoorsign.TabIndex = 2;
             this.tabDoorsign.Text = "Door Sign";
             this.tabDoorsign.UseVisualStyleBackColor = true;
+            // 
+            // ButtonCustom
+            // 
+            this.ButtonCustom.BackColor = System.Drawing.Color.White;
+            this.ButtonCustom.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonCustom.Location = new System.Drawing.Point(431, 7);
+            this.ButtonCustom.Name = "ButtonCustom";
+            this.ButtonCustom.Size = new System.Drawing.Size(135, 49);
+            this.ButtonCustom.TabIndex = 4;
+            this.ButtonCustom.Text = "Custom";
+            this.ButtonCustom.UseVisualStyleBackColor = false;
+            this.ButtonCustom.Click += new System.EventHandler(this.ButtonCustom_Click);
             // 
             // ButtonStreaming
             // 
@@ -411,15 +425,15 @@
             // 
             // CBOSignColor
             // 
+            this.CBOSignColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CBOSignColor.FormattingEnabled = true;
             this.CBOSignColor.Items.AddRange(new object[] {
             "Lime",
             "Yellow",
             "Red",
             "Blue",
-            "Grey",
-            "Black"});
-            this.CBOSignColor.Location = new System.Drawing.Point(497, 62);
+            "Gray"});
+            this.CBOSignColor.Location = new System.Drawing.Point(522, 62);
             this.CBOSignColor.Name = "CBOSignColor";
             this.CBOSignColor.Size = new System.Drawing.Size(110, 21);
             this.CBOSignColor.TabIndex = 2;
@@ -434,7 +448,7 @@
             this.TBSignExtra.Location = new System.Drawing.Point(8, 88);
             this.TBSignExtra.Multiline = true;
             this.TBSignExtra.Name = "TBSignExtra";
-            this.TBSignExtra.Size = new System.Drawing.Size(599, 348);
+            this.TBSignExtra.Size = new System.Drawing.Size(624, 348);
             this.TBSignExtra.TabIndex = 1;
             // 
             // TBSignTitle
@@ -443,7 +457,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TBSignTitle.Location = new System.Drawing.Point(9, 62);
             this.TBSignTitle.Name = "TBSignTitle";
-            this.TBSignTitle.Size = new System.Drawing.Size(481, 20);
+            this.TBSignTitle.Size = new System.Drawing.Size(506, 20);
             this.TBSignTitle.TabIndex = 1;
             // 
             // ButtonRecording
@@ -480,7 +494,7 @@
             this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(623, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(648, 25);
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 0;
             // 
@@ -574,7 +588,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 495);
+            this.ClientSize = new System.Drawing.Size(648, 495);
             this.Controls.Add(this.toolStripContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(450, 350);
@@ -654,6 +668,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmStreaming;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem tsmExit;
+        private System.Windows.Forms.Button ButtonCustom;
     }
 }
 

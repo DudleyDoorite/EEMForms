@@ -19,30 +19,27 @@ namespace EEMMain
 
         public void ChangeSign (Color NewColor, string NewTitle, string NewExtra)
         {
+            this.Hide();
+            this.Location = new Point(1920, 0);
             LabelTitle.ForeColor = NewColor;
             LabelTitle.Text = NewTitle;
             LabelExtra.Text = NewExtra;
+            this.Show();
         }
 
         public void SetAvailable ()
         {
-            LabelTitle.ForeColor = Color.FromName("Lime");
-            LabelTitle.Text = "Available"; 
-            LabelExtra.Text = "Come on in, I'm not busy.";
+            ChangeSign(Color.FromName("Lime"), "Available", "Come on in, I'm not busy.");
         }
 
         public void SetRecording()
         {
-            LabelTitle.ForeColor = Color.FromName("Yellow");
-            LabelTitle.Text = "Recording";
-            LabelExtra.Text = "Don't knock, just quietly open the door and wait for me to get to a good stopping point.";
+            ChangeSign(Color.FromName("Yellow"), "Recording", "Don't knock, just quietly open the door and wait for me to get to a good stopping point.");
         }
 
         public void SetStreaming()
         {
-            LabelTitle.ForeColor = Color.FromName("Red");
-            LabelTitle.Text = "Streaming";
-            LabelExtra.Text = "Only enter if it's an emergency. It would be better to text me.";
+            ChangeSign(Color.FromName("Red"), "Streaming", "Only enter if it's an emergency. It would be better to text me.");
         }
     }
 
