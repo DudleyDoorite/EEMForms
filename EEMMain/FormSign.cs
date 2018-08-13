@@ -29,17 +29,29 @@ namespace EEMMain
 
         public void SetAvailable ()
         {
-            ChangeSign(Color.FromName("Lime"), "Available", "Come on in, I'm not busy.");
+            ChangeSign(Color.FromName("Lime"), "Available", "Come on in");
         }
 
         public void SetRecording()
         {
-            ChangeSign(Color.FromName("Yellow"), "Recording", "Don't knock, just quietly open the door and wait for me to get to a good stopping point.");
+            ChangeSign(Color.FromName("Yellow"), "Recording", "Quietly open the door and wait for me to get to a good stopping point.");
         }
 
         public void SetStreaming()
         {
-            ChangeSign(Color.FromName("Red"), "Streaming", "Only enter if it's an emergency. It would be better to text me.");
+            ChangeSign(Color.FromName("Red"), "Streaming", "Only enter if it's important.");
+        }
+
+        private void FormSign_LocationChanged(object sender, EventArgs e)
+        {
+            if (this.Location == new Point(1920, 0))
+            {
+                //all good
+            }
+            else
+            {
+                this.Location = new Point(1920, 0);
+            };
         }
     }
 

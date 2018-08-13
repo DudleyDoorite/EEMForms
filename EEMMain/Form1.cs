@@ -146,6 +146,8 @@ namespace EEMMain
                 this.tbTags.Text = curEpisode.Tags;
                 this.tbSaveGameFolder.Text = curEpisode.SaveGameFolder;
                 this.TSLFolderName.Text = curEpisode.FolderName;
+
+                TSBSave.Enabled = false;
             }
         }
 
@@ -385,7 +387,7 @@ namespace EEMMain
             OBS.EnableRaisingEvents = true;
             OBS.Start();
 
-            mySign.SetRecording();
+            this.ButtonRecording_Click(sender, e);
         }
 
 
@@ -398,7 +400,8 @@ namespace EEMMain
             {
                 Util.DisplayErrorMessage(string.Format("OBS Exited with error code {0}", S.ExitCode));
             }
-            mySign.SetAvailable();
+
+            this.ButtonAvailable_Click(sender, e);
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
@@ -415,6 +418,7 @@ namespace EEMMain
             curEpisode.SaveGameFolder = tbSaveGameFolder.Text;
             curEpisode.FolderName = TSLFolderName.Text;
             curEpisode.Save(curEpisode.Path);
+            TSBSave.Enabled = false;
         }
 
         private void TSBRevert_Click(object sender, EventArgs e)
@@ -488,6 +492,32 @@ namespace EEMMain
         {
             ////mySettings.LastEpisode = treeView1.GetNodeAt(e.Location).Text;
             ////mySettings.UpdateSettings(); 
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            //choose folder
+            //clone that folder just like a local one
+        }
+
+        private void tbTitle_TextChanged(object sender, EventArgs e)
+        {
+            TSBSave.Enabled = true;
+        }
+
+        private void tbDescription_TextChanged(object sender, EventArgs e)
+        {
+            TSBSave.Enabled = true;
+        }
+
+        private void tbTags_TextChanged(object sender, EventArgs e)
+        {
+            TSBSave.Enabled = true;
+        }
+
+        private void tbSaveGameFolder_TextChanged(object sender, EventArgs e)
+        {
+            TSBSave.Enabled = true;
         }
     }
 }

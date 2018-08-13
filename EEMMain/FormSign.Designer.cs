@@ -70,6 +70,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FormSign";
             this.TopMost = true;
+            this.LocationChanged += new System.EventHandler(this.FormSign_LocationChanged);
             this.ResumeLayout(false);
 
         }
