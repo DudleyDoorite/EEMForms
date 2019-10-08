@@ -148,6 +148,9 @@ namespace EEMMain
                 this.TSLFolderName.Text = curEpisode.FolderName;
 
                 TSBSave.Enabled = false;
+
+                mySettings.LastEpisode = curEpisode.FolderName;
+                mySettings.UpdateSettings();
             }
         }
 
@@ -336,6 +339,28 @@ namespace EEMMain
             Clipboard.SetText(this.tbTags.Text);
         }
 
+        private void FolderCheckToggle()
+        {
+            //if selected episode's folder starts with a ✔ emoji then rename the folder to remove it, otherwise add it
+            
+            string tmpFolderName = curEpisode.FolderName;
+            string SourcePath = string.Format("{0}\\{1}", mySettings.BaseFolder, curEpisode.FolderName);
+
+            if (tmpFolderName.Substring(0,1) == "✔")
+            {
+                //remove check
+                Directory.Move(SourcePath,SourcePath.Replace("✔",""));
+                TSBCheck.ForeColor = Color.LightGray;
+            }
+            else
+            {
+                //add check
+                Directory.Move(SourcePath, string.Format("{0}\\✔{1}", mySettings.BaseFolder, curEpisode.FolderName));
+                TSBCheck.ForeColor = Color.Green;
+            }
+            ScanBaseFolder();
+        }
+
         private void ButtonAvailable_Click(object sender, EventArgs e)
         {
             mySign.SetAvailable();
@@ -518,6 +543,11 @@ namespace EEMMain
         private void tbSaveGameFolder_TextChanged(object sender, EventArgs e)
         {
             TSBSave.Enabled = true;
+        }
+
+        private void TSBCheck_Click(object sender, EventArgs e)
+        {
+            FolderCheckToggle();
         }
     }
 }

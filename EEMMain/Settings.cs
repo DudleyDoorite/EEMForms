@@ -118,6 +118,18 @@ namespace EEMMain
             }
         }
 
+        private string _StatusIcons;
+        public string StatusIcons
+        {
+            get { return _StatusIcons; }
+            set
+            {
+                _StatusIcons = value;
+                this.IsDirty = true;
+                OnSettingsChangedEvent(new SettingsEventArg("StatusIcons"));
+            }
+        }
+
 
         public bool IsDirty { get; set; }
 
@@ -138,7 +150,7 @@ namespace EEMMain
             this._MainFormWidth = ReadSetting("MainFormWidth");
             this._MainFormHeight = ReadSetting("MainFormHeight");
             this._LastEpisode = ReadSetting("LastEpisode");
-
+            this._StatusIcons = ReadSetting("StatusIcons");
 
             this.IsDirty = false;
         }
@@ -191,6 +203,7 @@ namespace EEMMain
             AddUpdateSettings("MainFormWidth", this._MainFormWidth);
             AddUpdateSettings("MainFormHeight", this._MainFormHeight);
             AddUpdateSettings("LastEpisode", this._LastEpisode);
+            AddUpdateSettings("StatusIcons", this._StatusIcons);
             this.IsDirty = false;
         }
 

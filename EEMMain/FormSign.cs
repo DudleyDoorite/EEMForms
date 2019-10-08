@@ -20,7 +20,7 @@ namespace EEMMain
         public void ChangeSign (Color NewColor, string NewTitle, string NewExtra)
         {
             this.Hide();
-            this.Location = new Point(1920, 0);
+            this.Location = new Point(2560, -480);
             LabelTitle.ForeColor = NewColor;
             LabelTitle.Text = NewTitle;
             LabelExtra.Text = NewExtra;
@@ -44,13 +44,13 @@ namespace EEMMain
 
         private void FormSign_LocationChanged(object sender, EventArgs e)
         {
-            if (this.Location == new Point(1920, 0))
+            if (this.Location == new Point(2560, -480))
             {
                 //all good
             }
             else
             {
-                this.Location = new Point(1920, 0);
+                this.Location = new Point(2560, -480);
             };
         }
     }
